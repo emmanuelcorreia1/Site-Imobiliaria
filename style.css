@@ -1,0 +1,247 @@
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.divHeader {                
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: -10px;
+  font-family: 'Poppins-medium';
+}
+
+.menuHeader nav{                
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.menuHeader{
+    border-radius: 60px;
+    background-color: rgb(255, 255, 255);
+    margin-right: -60px;
+    box-shadow: rgba(0, 0, 0, 0.408) 2px 2px 10px;
+}
+
+.menuHeader a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: 0.3s;
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+
+.menuHeader a:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.anuncieHeader a{                
+  float: right;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  padding: 13px 40px;
+  font-family: 'Poppins-medium';
+  border-radius: 50px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(165, 165, 165, 0.35);
+  box-shadow:
+  0 8px 30px rgba(0,0,0,0.12),
+  inset 0 1px 2px rgba(255,255,255,0.6);
+  transition: 0.3s;
+}
+
+.anuncieHeader a:hover{
+  background: rgba(255,255,255,0.25);
+  box-shadow: 
+  0 10px 40px rgba(0,0,0,0.15),
+  inset 0 1px 2px rgba(255,255,255,0.6);
+}
+
+#logoHeader{
+    width: 150px;
+    margin-left: 10px;
+    filter: invert(100%);
+    filter: brightness(100);
+}
+
+.textoPrincipal{
+    letter-spacing: 2px;
+    font-size: 25px;
+}
+
+.textoPrincipal h1{
+    font-family: 'Poppins-light';
+}
+
+.textoPrincipal span{
+    font-family: 'Universal';
+    font-weight: lighter;
+    position: relative;
+    background: linear-gradient(
+        120deg,
+        rgba(220, 220, 220, 0.9),
+        rgba(255, 255, 255, 0.6),
+        rgba(206, 206, 206, 0.9)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 2px 4px rgba(223, 223, 223, 0.25),
+        0 8px 20px rgba(28, 28, 28, 0.4);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+
+
+
+
+@font-face {
+    font-family: 'Poppins-medium';
+    src: url(/fonts/Poppins/Poppins-Medium.ttf) format('truetype');  
+}
+
+@font-face {
+    font-family: 'Poppins-light';
+    src: url(/fonts/Poppins/Poppins-Light.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Universal';
+    src: url(/fonts/universal_serif/Universal\ Serif.ttf) format('truetype');
+}
+
+.terra{
+    width: 100px;
+    float: right;
+}
+
+
+.caixaBusca{
+    padding: 20px;
+    border-radius: 40px;
+    background-color: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+
+.dropdownFiltro{
+    position: relative;
+    width: 260px;
+    font-family: 'Poppins-medium';
+}
+
+.dropdownAlternar{
+    width: 220px;
+    height: 60px;
+    background: #dddddd;
+    border-radius: 50px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    color: #222;
+    font-size: 18px;
+    user-select: none;
+}
+
+.iconeSeta{
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.dropdownFiltro.ativo .iconeSeta{
+    transform: rotate(180deg);
+}
+
+.dropdownList{
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 220px;
+    background: #efefef;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    display: none;
+    z-index: 1000;
+}
+
+.dropdownFiltro.ativo .dropdownList{
+    display: block;
+}
+
+.dropdownBase{
+    width: 100%;
+}
+
+.checkboxWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.checkboxFilter{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    font-size: 16px;
+    color: #222;
+}
+
+.checkboxFilter input{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.checkboxCustom{
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 4px;
+    background: #fff;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.checkboxFilter input:checked + .checkboxCustom{
+    background: #111;
+    border-color: #111;
+}
+
+.checkboxFilter input:checked + .checkboxCustom::after{
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkboxTexto{
+    line-height: 1.2;
+}

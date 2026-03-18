@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>Mondialle Imobiliária</title>
+  </head>
+  <body>
+    <header>
+      <div class="divHeader">
+        <div class="logoHeader">
+          <a href="#">
+            <img
+              src="/images/Logo sem fundo.png"
+              alt="logo mondialle imobiliaria"
+              id="logoHeader"
+            />
+          </a>
+        </div>
+        <div class="menuHeader">
+          <nav>
+            <a href="#">Início</a>
+            <a href="">Venda</a>
+            <a href="">Locação</a>
+            <a href="">Sobre a Mondialle</a>
+            <a href="">Contato</a>
+          </nav>
+        </div>
+        <div class="anuncieHeader">
+          <a href="">Anucie seu imóvel</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="textoPrincipal">
+      <h1>
+        Encontre o imóvel ideal <br />
+        com a <span class="mondialle">MONDIALLE</span>
+      </h1>
+    </div>
+
+    <div>
+      <img src="/images/Casas_2d.png" alt="CidadeLinha" class="cidadeLinha" />
+      <img src="/images/Terra.png" alt="Planeta Terra" class="terra" />
+    </div>
+
+    <main class="busca">
+      <div class="caixaBusca">
+        <div class="dropdownFiltro">
+          <div
+            class="dropdownAlternar"
+            onclick="alternarDropdown('dropdownFinalidade')"
+          >
+            <span>Finalidade</span>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownFinalidade">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="cat1" id="cat1" />
+
+                <label class="checkboxFilter">
+                  <input
+                    onclick="adicionarFinalidade('venda')"
+                    type="checkbox"
+                    name="finalidade"
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Venda</span>
+                </label>
+
+                <label class="checkboxFilter">
+                  <input
+                    onclick="adicionarFinalidade('locacao')"
+                    type="checkbox"
+                    name="finalidade"
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Locação</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdownFiltro">
+          <div
+            class="dropdownAlternar"
+            onclick="alternarDropdown('dropdownFinalidade')"
+          >
+            <span>Categoria</span>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownFinalidade">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="cat1" id="cat1" />
+
+                <label class="checkboxFilter">
+                  <input
+                    onclick="adicionarFinalidade('venda')"
+                    type="checkbox"
+                    name="finalidade"
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Venda</span>
+                </label>
+
+                <label class="checkboxFilter">
+                  <input
+                    onclick="adicionarFinalidade('locacao')"
+                    type="checkbox"
+                    name="finalidade"
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Locação</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="principal">
+        <div class="divPrincipal"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
