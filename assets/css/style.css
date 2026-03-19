@@ -2,12 +2,14 @@ body{
     background-color: black;
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
 a{
     text-decoration: none;
 }
 
+/*Header do site*/
 .divHeader {                
   display: flex;
   justify-content: space-between;
@@ -84,6 +86,7 @@ a{
 .textoPrincipal{
     letter-spacing: 2px;
     font-size: 30px;
+    margin-top: 40px;
 }
 
 .textoPrincipal h1{
@@ -96,9 +99,9 @@ a{
     position: relative;
     background: linear-gradient(
         120deg,
-        rgba(220, 220, 220, 0.9),
-        rgba(255, 255, 255, 0.6),
-        rgba(206, 206, 206, 0.9)
+        rgba(220, 220, 220, 30),
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 60)
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -112,7 +115,7 @@ a{
 
 
 
-
+/*Fontes add*/
 
 @font-face {
     font-family: 'Poppins-medium';
@@ -130,24 +133,45 @@ a{
 }
 
 .imagesMain{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.cirBlur{
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    filter: blur(90px);
+    right: -360px;
+    top: -20px;
+    z-index: 0;
 }
 
 .terra{
-    width: 100px;
-    float: right;
-
+    width: 900px;
+    position: absolute;
+    z-index: 1;
+    right: -460px;
+    top: -140px;
 }
 
 .cidadeLinha{
     width: 1200px;
     margin-left: 8%;
+    position: relative;
+    z-index: 4;
 }
 
+/*Busca de imóveis por filtro*/
 
-
+main.busca{
+    position: relative;
+}
 
 .caixaBusca{
     padding: 20px;
@@ -155,6 +179,9 @@ a{
     background-color: white;
     margin-left: 10%;
     margin-right: 10%;
+    position: relative;
+    z-index: 3;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 30px;
 }
 
 .gridBusca{
@@ -202,14 +229,15 @@ a{
 .dropdownList{
     position: absolute;
     top: 60px;
-    left: 0;
+    left: 12px;
     width: 180px;
     background: #efefef;
     border-radius: 18px;
     padding: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
     display: none;
-    z-index: 1000;
+    z-index: 5;
+    box-shadow: rgba(0, 0, 0, 0.2) 2px 5px 14px;
 }
 
 .dropdownFiltro.ativo .dropdownList{
@@ -271,4 +299,16 @@ a{
 
 .checkboxTexto{
     line-height: 1.2;
+}
+
+/*Imóveis em destaque*/
+.divPrincipal{
+    background-color: white;
+    width: 101%;
+    height: 600px;
+    position: relative;
+    z-index: 2;
+    top: -40px;
+
+
 }
