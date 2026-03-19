@@ -116,17 +116,17 @@ a{
 
 @font-face {
     font-family: 'Poppins-medium';
-    src: url(/fonts/Poppins/Poppins-Medium.ttf) format('truetype');  
+    src: url(/assets/fonts/Poppins/Poppins-Medium.ttf) format('truetype');  
 }
 
 @font-face {
     font-family: 'Poppins-light';
-    src: url(/fonts/Poppins/Poppins-Light.ttf) format('truetype');
+    src: url(/assets/fonts/Poppins/Poppins-Light.ttf) format('truetype');
 }
 
 @font-face {
     font-family: 'Universal';
-    src: url(/fonts/universal_serif/Universal\ Serif.ttf) format('truetype');
+    src: url(/assets/fonts/universal_serif/Universal\ Serif.ttf) format('truetype');
 }
 
 .imagesMain{
