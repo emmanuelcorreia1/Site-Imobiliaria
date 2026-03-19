@@ -25,6 +25,7 @@ a{
   justify-content: center;
   gap: 10px;
   padding: 5px;
+  font-size: 16px;
 }
 
 .menuHeader{
@@ -39,7 +40,7 @@ a{
     color: rgb(0, 0, 0);
     transition: 0.3s;
     border-radius: 50px;
-    padding: 10px 30px;
+    padding: 15px 35px;
 }
 
 .menuHeader a:hover{
@@ -52,8 +53,9 @@ a{
   position: relative;
   overflow: hidden;
   color: #ffffff;
-  padding: 13px 40px;
+  padding: 20px 40px;
   font-family: 'Poppins-medium';
+  font-size: 16px;
   border-radius: 50px;
   background: rgba(255,255,255,0.18);
   backdrop-filter: blur(14px);
@@ -81,7 +83,7 @@ a{
 
 .textoPrincipal{
     letter-spacing: 2px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .textoPrincipal h1{
@@ -127,10 +129,24 @@ a{
     src: url(/fonts/universal_serif/Universal\ Serif.ttf) format('truetype');
 }
 
+.imagesMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .terra{
     width: 100px;
     float: right;
+
 }
+
+.cidadeLinha{
+    width: 1200px;
+    margin-left: 8%;
+}
+
+
 
 
 .caixaBusca{
@@ -139,33 +155,44 @@ a{
     background-color: white;
     margin-left: 10%;
     margin-right: 10%;
-    
+}
+
+.gridBusca{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dropdownFiltro{
     position: relative;
-    width: 260px;
-    font-family: 'Poppins-medium';
+    width: 230px;
+    font-family: 'Poppins-light';
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dropdownAlternar{
-    width: 220px;
-    height: 60px;
+    width: 130px;
+    height: 50px;
     background: #dddddd;
     border-radius: 50px;
     padding: 0 22px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     cursor: pointer;
-    color: #222;
-    font-size: 18px;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 600;
     user-select: none;
+    gap: 25px;
+    padding-left: 60px;
 }
 
 .iconeSeta{
-    font-size: 22px;
+    font-size: 15px;
     transition: 0.3s;
+    margin-left: 20px;
 }
 
 .dropdownFiltro.ativo .iconeSeta{
@@ -174,9 +201,9 @@ a{
 
 .dropdownList{
     position: absolute;
-    top: 68px;
+    top: 60px;
     left: 0;
-    width: 220px;
+    width: 180px;
     background: #efefef;
     border-radius: 18px;
     padding: 16px;
@@ -199,7 +226,7 @@ a{
     gap: 14px;
 }
 
-.checkboxFilter{
+.checkboxLabel{
     display: flex;
     align-items: center;
     gap: 12px;
@@ -209,7 +236,7 @@ a{
     color: #222;
 }
 
-.checkboxFilter input{
+.checkboxLabel input{
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -225,12 +252,12 @@ a{
     position: relative;
 }
 
-.checkboxFilter input:checked + .checkboxCustom{
+.checkboxLabel input:checked + .checkboxCustom{
     background: #111;
     border-color: #111;
 }
 
-.checkboxFilter input:checked + .checkboxCustom::after{
+.checkboxLabel input:checked + .checkboxCustom::after{
     content: "";
     position: absolute;
     left: 6px;
