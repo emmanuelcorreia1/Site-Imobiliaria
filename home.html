@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
     <title>Mondialle Imobiliária</title>
     <link
       rel="shortcut icon"
@@ -19,7 +23,7 @@
         <div class="logoHeader">
           <a href="#">
             <img
-              src="/assets/images/Logo sem fundo.png"
+              src="/assets/images/Logo branca sem fundo.png"
               alt="logo mondialle imobiliaria"
               id="logoHeader"
             />
@@ -47,8 +51,8 @@
       </h1>
     </div>
 
-    <main class="busca">
-      <div class="imagesMain">
+    <section class="busca">
+      <div class="imagesSection">
         <img
           src="/assets/images/Casas_2d.png"
           alt="CidadeLinha"
@@ -259,7 +263,7 @@
               <div class="slider"></div>
               <div class="sliderRange" id="sliderRange"></div>
 
-              <input type="hidden" name="precoMin" id="inputPrecoMin">
+              <input type="hidden" name="precoMin" id="inputPrecoMin" />
 
               <input
                 type="range"
@@ -271,7 +275,7 @@
                 class="inputRange"
               />
 
-              <input type="hidden" name="precoMax" id="inputPrecoMax">
+              <input type="hidden" name="precoMax" id="inputPrecoMax" />
 
               <input
                 type="range"
@@ -290,16 +294,85 @@
           </div>
 
           <div class="campoCodigo">
-            <input type="text" placeholder="Código" class="inputCodigo" name="codigo" id="codigo" maxlength="3">
+            <input
+              type="text"
+              placeholder="Código"
+              class="inputCodigo"
+              name="codigo"
+              id="codigo"
+              maxlength="3"
+            />
           </div>
-
         </div>
       </form>
+    </section>
 
-      <section class="principal">
+    <main class="principal">
+      <section class="sectionPrincipal">
         <div class="divPrincipal"></div>
       </section>
     </main>
+
+    <footer class="footer">
+      <div class="divFooter">
+        <div class="footerMarca">
+          <img
+            src="/assets/images/Logo branca sem fundo.png"
+            alt="footer Logo"
+            class="footerLogo"
+          />
+
+          <p>
+            Mondialle Imobiliária conecta pessoas às melhores oportunidades do
+            mercado imobiliário, com transparência, segurança e atendimento
+            personalizado em cada negociação.
+          </p>
+
+          <div class="redeSocial">
+            <a href="https://www.instagram.com/mondialleimobiliaria/" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61584971055990" aria-label="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </div>
+
+          <span class="footerTexto">
+            © 2026 Mondialle Imobiliária. Todos os direitos reservados.
+          </span>
+        </div>
+
+        <div class="footerIndices">
+          <h3>Navegação</h3>
+          <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Venda</a></li>
+            <li><a href="#">Locação</a></li>
+            <li><a href="#">Sobre a Mondialle</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footerindices">
+          <h3>Contato</h3>
+          <ul class="footerContato">
+            <li>Email - mondialleimobiliaria@gmail.com</li>
+            <li>Telefone - (42) 9982-8281</li>
+            <li>
+              Localização - Rua Floriano Peixoto, 180 sala 155 - Centro, União
+              da Vitória
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="creditosFooter">
+        Design e Desenvolvimento do site por
+        <span>Emmanuel Scharnoski Correia</span>
+      </div>
+
+      <div class="mondialleGrandeFooter">MONDIALLE</div>
+    </footer>
 
     <script src="/assets/js/home.js"></script>
   </body>
