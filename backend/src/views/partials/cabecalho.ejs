@@ -1,0 +1,28 @@
+<header>
+  <div class="divHeader">
+    <div class="logoHeader">
+      <a href="/">
+        <img
+          src="/assets/images/Logo branca sem fundo.png"
+          alt="Logo Mondialle Imobiliaria"
+          id="logoHeader"
+        />
+      </a>
+    </div>
+
+    <div class="menuHeader">
+      <nav>
+        <a href="/" class="<%= pagina === 'home' ? 'is-active' : '' %>">Inicio</a>
+        <a href="/venda" class="<%= pagina === 'venda' ? 'is-active' : '' %>">Venda</a>
+        <a href="/locacao" class="<%= pagina === 'locacao' ? 'is-active' : '' %>">Locacao</a>
+        <a href="/imoveis" class="<%= pagina === 'imoveis' ? 'is-active' : '' %>">Catalogo</a>
+        <a href="/sobre" class="<%= pagina === 'sobre' ? 'is-active' : '' %>">Sobre</a>
+        <a href="/contato" class="<%= pagina === 'contato' ? 'is-active' : '' %>">Contato</a>
+      </nav>
+    </div>
+
+    <div class="anuncieHeader">
+      <a href="/contato">Anuncie seu imovel</a>
+    </div>
+  </div>
+</header>

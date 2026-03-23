@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <%- include("../partials/cabecalho-head", { titulo }) %>
+  </head>
+  <body>
+    <%- include("../partials/cabecalho", { pagina, empresa }) %>
+
+    <main class="internalPage">
+      <section class="pageHero">
+        <span class="sectionEyebrow">Institucional</span>
+        <h1>Sobre a Mondialle</h1>
+        <p>
+          Estruturamos a plataforma para que clientes encontrem opcoes de venda e locacao com filtros claros, codigos de imovel e contato direto com a equipe.
+        </p>
+      </section>
+
+      <section class="contentSection infoGrid">
+        <article class="infoCard">
+          <h2>Atendimento local</h2>
+          <p>
+            Atuacao focada em Uniao da Vitoria, Porto Uniao e regiao, com apoio para avaliacao, captacao e intermediacao.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h2>Catalogo organizado</h2>
+          <p>
+            Hoje a plataforma ja conta com <strong><%= totalImoveis %></strong> imoveis de exemplo estruturados para busca por finalidade, localizacao e preco.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h2>Base para crescer</h2>
+          <p>
+            O backend foi adaptado para virar o nucleo do sistema e pode evoluir para cadastro administrativo, banco de dados e integracoes.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <%- include("../partials/rodape", { empresa }) %>
+  </body>
+</html>

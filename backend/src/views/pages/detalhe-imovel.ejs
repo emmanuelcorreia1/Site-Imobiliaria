@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <%- include("../partials/cabecalho-head", { titulo }) %>
+  </head>
+  <body>
+    <%- include("../partials/cabecalho", { pagina, empresa }) %>
+
+    <main class="internalPage">
+      <section class="detailHero">
+        <div class="detailImageWrap">
+          <img src="<%= imovel.imagem %>" alt="<%= imovel.titulo %>" class="detailImage" />
+        </div>
+
+        <div class="detailContent">
+          <span class="sectionEyebrow">Codigo <%= imovel.codigo %></span>
+          <h1><%= imovel.titulo %></h1>
+          <p class="detailLocation"><%= imovel.cidade %> - <%= imovel.bairro %></p>
+          <p class="detailDescription"><%= imovel.descricao %></p>
+
+          <div class="detailSpecs">
+            <span><strong><%= imovel.categoria %></strong></span>
+            <span><strong><%= imovel.quartos %></strong> quartos</span>
+            <span><strong><%= imovel.banheiros %></strong> banheiros</span>
+            <span><strong><%= imovel.vagas %></strong> vagas</span>
+            <span><strong><%= imovel.area %></strong> m2</span>
+          </div>
+
+          <div class="detailActions">
+            <strong class="detailPrice">
+              R$ <%= imovel.preco.toLocaleString("pt-BR") %>
+              <%= imovel.finalidade === "locacao" ? "/mes" : "" %>
+            </strong>
+            <a class="btnBuscar detailButton" href="/contato">Solicitar atendimento</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <%- include("../partials/rodape", { empresa }) %>
+  </body>
+</html>

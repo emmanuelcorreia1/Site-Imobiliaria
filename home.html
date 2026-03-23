@@ -1,379 +1,383 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <title>Mondialle Imobiliária</title>
-    <link
-      rel="shortcut icon"
-      href="/assets/images/Logo sem fundo.png"
-      type="image/x-icon"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <header>
-      <div class="divHeader">
-        <div class="logoHeader">
-          <a href="#">
-            <img
-              src="/assets/images/Logo branca sem fundo.png"
-              alt="logo mondialle imobiliaria"
-              id="logoHeader"
-            />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <title>Mondialle Imobiliária</title>
+  <link rel="shortcut icon" href="/assets/images/Logo sem fundo.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <header>
+    <div class="divHeader">
+      <div class="logoHeader">
+        <a href="#">
+          <img src="/assets/images/Logo branca sem fundo.png" alt="logo mondialle imobiliaria" id="logoHeader" />
+        </a>
+      </div>
+      <div class="menuHeader">
+        <nav>
+          <a href="#">Início</a>
+          <a href="">Venda</a>
+          <a href="">Locação</a>
+          <a href="">Sobre a Mondialle</a>
+          <a href="">Contato</a>
+        </nav>
+      </div>
+      <div class="anuncieHeader">
+        <a href="">Anucie seu imóvel</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="textoPrincipal">
+    <h1>
+      Encontre o imóvel ideal <br />
+      com a <span class="mondialle">MONDIALLE</span>
+    </h1>
+  </div>
+
+  <section class="busca">
+    <div class="imagesSection">
+      <img src="/assets/images/Casas_2d.png" alt="CidadeLinha" class="cidadeLinha" />
+      <img src="/assets/images/Terra.png" alt="Planeta Terra" class="terra" />
+      <div class="cirBlur"></div>
+    </div>
+    <form class="caixaBusca">
+      <div class="gridBuscaCima">
+        <div class="dropdownFiltro">
+          <div class="dropdownAlternar" onclick="alternarDropdown('dropdownFinalidade')">
+            <p>Finalidade</p>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownFinalidade">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="inputFinalidade" id="inputFinalidade" />
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('venda')" type="checkbox" name="finalidade" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Venda</span>
+                </label>
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('locacao')" type="checkbox" name="finalidade" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Locação</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdownFiltro">
+          <div class="dropdownAlternar" onclick="alternarDropdown('dropdownCategoria')">
+            <span>Categoria</span>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownCategoria">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="inputCategoria" id="inputCategoria" />
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('Casa')" type="checkbox" name="categoria" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Casa</span>
+                </label>
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('Apartemento')" type="checkbox" name="categoria" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Apartamento</span>
+                </label>
+
+                <label class="checkboxLabel">
+                  <input type="checkbox" name="categoria" onclick="atualizarFiltro('Terreno')" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Terreno</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdownFiltro">
+          <div class="dropdownAlternar" onclick="alternarDropdown('dropdownCidade')">
+            <span>Cidade</span>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownCidade">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="inputCidade" id="inputCidade" />
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('União da Vitória')" type="checkbox" name="cidade" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">União da Vitória</span>
+                </label>
+
+                <label class="checkboxLabel">
+                  <input onclick="atualizarFiltro('Porto União')" type="checkbox" name="cidade" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Porto União</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdownFiltro">
+          <div class="dropdownAlternar" onclick="alternarDropdown('dropdownBairro')">
+            <p>Bairro</p>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownBairro">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="inputBairro" id="inputBairro" />
+
+                <label class="checkboxLabel">
+                  <input type="checkbox" name="cidade" onclick="atualizarFiltro('Centro')" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">Centro</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdownFiltro">
+          <div class="dropdownAlternar" onclick="alternarDropdown('dropdownQuartos')">
+            <p>Quartos</p>
+            <span class="iconeSeta">▼</span>
+          </div>
+
+          <div class="dropdownList" id="dropdownQuartos">
+            <div class="dropdownBase">
+              <div class="checkboxWrap">
+                <input type="hidden" name="inputQuartos" id="inputQuartos" />
+
+                <label class="checkboxLabel">
+                  <input type="checkbox" name="quartos" onclick="atualizarFiltro('1')" />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto">1 Quarto</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gridBuscaBaixo">
+        <div class="filtroPreco">
+          <div class="valores">
+            <div class="valorBox" id="valorMin">R$ 0</div>
+            <div class="valorBox" id="valorMax">R$ 1.500.000 +</div>
+          </div>
+
+          <div class="divSlider">
+            <div class="slider"></div>
+            <div class="sliderRange" id="sliderRange"></div>
+
+            <input type="hidden" name="precoMin" id="inputPrecoMin" />
+
+            <input type="range" min="0" max="1500000" value="0" step="10000" id="rangeMin" class="inputRange" />
+
+            <input type="hidden" name="precoMax" id="inputPrecoMax" />
+
+            <input type="range" min="0" max="1500000" value="1500000" step="10000" id="rangeMax" class="inputRange" />
+          </div>
+        </div>
+
+        <div class="botaoBusca">
+          <button type="submit" class="btnBuscar">Buscar</button>
+        </div>
+
+        <div class="campoCodigo">
+          <input type="text" placeholder="Código" class="inputCodigo" name="codigo" id="codigo" maxlength="3" />
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <main class="principal">
+    <section class="sectionPrincipal">
+      <div class="divPrincipal">
+        <div class="destaque">
+          <h2 class="tituloDestaques">Destaques de Venda</h2>
+          <div class="gridImoveis">
+            <article class="cardImovel">
+              <img src="/assets/images/casa01.jpg" alt="Casa em ..." class="imagemImovel">
+
+              <div class="infoCard">
+                <div class="infoLocal">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Rua Imaginária Teste, 123, São pedro</p>
+                </div>
+
+                <div class="nomeCard">
+                  <div>
+                    <h3>São Pedro</h3>
+                    <p>Porto União</p>
+                  </div>
+                  <span><i class="fa-solid fa-ruler-combined"></i> 150,00 m²</span>
+                </div>
+
+                <div class="atributos">
+                  <span><i class="fa-solid fa-bed"></i> 4</span>
+                  <span><i class="fa-solid fa-bath"></i> 3</span>
+                  <span><i class="fa-solid fa-car"></i> 4</span>
+                </div>
+
+                <div class="preço"><span>Preço:</span>R$ 1.400.000,00</div>
+
+                <a href="#" class="verDetalhes">Ver detalhes</a>
+              </div>
+
+            </article>
+
+            <article class="cardImovel">
+              <img src="/assets/images/casa01.jpg" alt="Casa em ..." class="imagemImovel">
+
+              <div class="infoCard">
+                <div class="infoLocal">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Rua Imaginária Teste, 123, São pedro</p>
+                </div>
+
+                <div class="nomeCard">
+                  <div>
+                    <h3>São Pedro</h3>
+                    <p>Porto União</p>
+                  </div>
+                  <span><i class="fa-solid fa-ruler-combined"></i> 150,00 m²</span>
+                </div>
+
+                <div class="atributos">
+                  <span><i class="fa-solid fa-bed"></i> 4</span>
+                  <span><i class="fa-solid fa-bath"></i> 3</span>
+                  <span><i class="fa-solid fa-car"></i> 4</span>
+                </div>
+
+                <div class="preço"><span>Preço:</span>R$ 1.400.000,00</div>
+
+                <a href="#" class="verDetalhes">Ver detalhes</a>
+              </div>
+
+            </article>
+
+            <article class="cardImovel">
+              <img src="/assets/images/casa01.jpg" alt="Casa em ..." class="imagemImovel">
+
+              <div class="infoCard">
+                <div class="infoLocal">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p>Rua Imaginária Teste, 123, São pedro</p>
+                </div>
+
+                <div class="nomeCard">
+                  <div>
+                    <h3>São Pedro</h3>
+                    <p>Porto União</p>
+                  </div>
+                  <span><i class="fa-solid fa-ruler-combined"></i> 150,00 m²</span>
+                </div>
+
+                <div class="atributos">
+                  <span><i class="fa-solid fa-bed"></i> 4</span>
+                  <span><i class="fa-solid fa-bath"></i> 3</span>
+                  <span><i class="fa-solid fa-car"></i> 4</span>
+                </div>
+
+                <div class="preço"><span>Preço:</span>R$ 1.400.000,00</div>
+
+                <a href="#" class="verDetalhes">Ver detalhes</a>
+              </div>
+
+            </article>
+
+            
+          </div>
+
+          <div class="destaque">
+
+          </div>
+        </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="divFooter">
+      <div class="footerMarca">
+        <img src="/assets/images/Logo branca sem fundo.png" alt="footer Logo" class="footerLogo" />
+
+        <p>
+          Mondialle Imobiliária conecta pessoas às melhores oportunidades do
+          mercado imobiliário, com transparência, segurança e atendimento
+          personalizado em cada negociação.
+        </p>
+
+        <div class="redeSocial">
+          <a href="https://www.instagram.com/mondialleimobiliaria/" aria-label="Instagram" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61584971055990" aria-label="Facebook" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fa-brands fa-facebook"></i>
           </a>
         </div>
-        <div class="menuHeader">
-          <nav>
-            <a href="#">Início</a>
-            <a href="">Venda</a>
-            <a href="">Locação</a>
-            <a href="">Sobre a Mondialle</a>
-            <a href="">Contato</a>
-          </nav>
-        </div>
-        <div class="anuncieHeader">
-          <a href="">Anucie seu imóvel</a>
-        </div>
-      </div>
-    </header>
 
-    <div class="textoPrincipal">
-      <h1>
-        Encontre o imóvel ideal <br />
-        com a <span class="mondialle">MONDIALLE</span>
-      </h1>
+        <span class="footerTexto">
+          © 2026 Mondialle Imobiliária. Todos os direitos reservados.
+        </span>
+      </div>
+
+      <div class="footerIndices">
+        <h3>Navegação</h3>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Venda</a></li>
+          <li><a href="#">Locação</a></li>
+          <li><a href="#">Sobre a Mondialle</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footerIndices">
+        <h3>Contato</h3>
+        <ul class="footerContato">
+          <li>Email - mondialleimobiliaria@gmail.com</li>
+          <li>Telefone - (42) 9982-8281</li>
+          <li>
+            Localização - Rua Floriano Peixoto, 180 sala 151 - Centro, União
+            da Vitória
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <section class="busca">
-      <div class="imagesSection">
-        <img
-          src="/assets/images/Casas_2d.png"
-          alt="CidadeLinha"
-          class="cidadeLinha"
-        />
-        <img src="/assets/images/Terra.png" alt="Planeta Terra" class="terra" />
-        <div class="cirBlur"></div>
-      </div>
-      <form class="caixaBusca">
-        <div class="gridBuscaCima">
-          <div class="dropdownFiltro">
-            <div
-              class="dropdownAlternar"
-              onclick="alternarDropdown('dropdownFinalidade')"
-            >
-              <p>Finalidade</p>
-              <span class="iconeSeta">▼</span>
-            </div>
+    <div class="creditosFooter">
+      Design e Desenvolvimento do site por
+      <span>Emmanuel Scharnoski Correia</span>
+    </div>
 
-            <div class="dropdownList" id="dropdownFinalidade">
-              <div class="dropdownBase">
-                <div class="checkboxWrap">
-                  <input
-                    type="hidden"
-                    name="inputFinalidade"
-                    id="inputFinalidade"
-                  />
+    <div class="mondialleGrandeFooter">MONDIALLE</div>
+  </footer>
 
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('venda')"
-                      type="checkbox"
-                      name="finalidade"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Venda</span>
-                  </label>
+  <script src="/assets/js/home.js"></script>
+</body>
 
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('locacao')"
-                      type="checkbox"
-                      name="finalidade"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Locação</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dropdownFiltro">
-            <div
-              class="dropdownAlternar"
-              onclick="alternarDropdown('dropdownCategoria')"
-            >
-              <span>Categoria</span>
-              <span class="iconeSeta">▼</span>
-            </div>
-
-            <div class="dropdownList" id="dropdownCategoria">
-              <div class="dropdownBase">
-                <div class="checkboxWrap">
-                  <input
-                    type="hidden"
-                    name="inputCategoria"
-                    id="inputCategoria"
-                  />
-
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('Casa')"
-                      type="checkbox"
-                      name="categoria"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Casa</span>
-                  </label>
-
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('Apartemento')"
-                      type="checkbox"
-                      name="categoria"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Apartamento</span>
-                  </label>
-
-                  <label class="checkboxLabel">
-                    <input
-                      type="checkbox"
-                      name="categoria"
-                      onclick="atualizarFiltro('Terreno')"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Terreno</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dropdownFiltro">
-            <div
-              class="dropdownAlternar"
-              onclick="alternarDropdown('dropdownCidade')"
-            >
-              <span>Cidade</span>
-              <span class="iconeSeta">▼</span>
-            </div>
-
-            <div class="dropdownList" id="dropdownCidade">
-              <div class="dropdownBase">
-                <div class="checkboxWrap">
-                  <input type="hidden" name="inputCidade" id="inputCidade" />
-
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('União da Vitória')"
-                      type="checkbox"
-                      name="cidade"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">União da Vitória</span>
-                  </label>
-
-                  <label class="checkboxLabel">
-                    <input
-                      onclick="atualizarFiltro('Porto União')"
-                      type="checkbox"
-                      name="cidade"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Porto União</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dropdownFiltro">
-            <div
-              class="dropdownAlternar"
-              onclick="alternarDropdown('dropdownBairro')"
-            >
-              <p>Bairro</p>
-              <span class="iconeSeta">▼</span>
-            </div>
-
-            <div class="dropdownList" id="dropdownBairro">
-              <div class="dropdownBase">
-                <div class="checkboxWrap">
-                  <input type="hidden" name="inputBairro" id="inputBairro" />
-
-                  <label class="checkboxLabel">
-                    <input
-                      type="checkbox"
-                      name="cidade"
-                      onclick="atualizarFiltro('Centro')"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">Centro</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="dropdownFiltro">
-            <div
-              class="dropdownAlternar"
-              onclick="alternarDropdown('dropdownQuartos')"
-            >
-              <p>Quartos</p>
-              <span class="iconeSeta">▼</span>
-            </div>
-
-            <div class="dropdownList" id="dropdownQuartos">
-              <div class="dropdownBase">
-                <div class="checkboxWrap">
-                  <input type="hidden" name="inputQuartos" id="inputQuartos" />
-
-                  <label class="checkboxLabel">
-                    <input
-                      type="checkbox"
-                      name="quartos"
-                      onclick="atualizarFiltro('1')"
-                    />
-                    <span class="checkboxCustom"></span>
-                    <span class="checkboxTexto">1 Quarto</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="gridBuscaBaixo">
-          <div class="filtroPreco">
-            <div class="valores">
-              <div class="valorBox" id="valorMin">R$ 0</div>
-              <div class="valorBox" id="valorMax">R$ 1.500.000 +</div>
-            </div>
-
-            <div class="divSlider">
-              <div class="slider"></div>
-              <div class="sliderRange" id="sliderRange"></div>
-
-              <input type="hidden" name="precoMin" id="inputPrecoMin" />
-
-              <input
-                type="range"
-                min="0"
-                max="1500000"
-                value="0"
-                step="10000"
-                id="rangeMin"
-                class="inputRange"
-              />
-
-              <input type="hidden" name="precoMax" id="inputPrecoMax" />
-
-              <input
-                type="range"
-                min="0"
-                max="1500000"
-                value="1500000"
-                step="10000"
-                id="rangeMax"
-                class="inputRange"
-              />
-            </div>
-          </div>
-
-          <div class="botaoBusca">
-            <button type="submit" class="btnBuscar">Buscar</button>
-          </div>
-
-          <div class="campoCodigo">
-            <input
-              type="text"
-              placeholder="Código"
-              class="inputCodigo"
-              name="codigo"
-              id="codigo"
-              maxlength="3"
-            />
-          </div>
-        </div>
-      </form>
-    </section>
-
-    <main class="principal">
-      <section class="sectionPrincipal">
-        <div class="divPrincipal"></div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="divFooter">
-        <div class="footerMarca">
-          <img
-            src="/assets/images/Logo branca sem fundo.png"
-            alt="footer Logo"
-            class="footerLogo"
-          />
-
-          <p>
-            Mondialle Imobiliária conecta pessoas às melhores oportunidades do
-            mercado imobiliário, com transparência, segurança e atendimento
-            personalizado em cada negociação.
-          </p>
-
-          <div class="redeSocial">
-            <a href="https://www.instagram.com/mondialleimobiliaria/" aria-label="Instagram">
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61584971055990" aria-label="Facebook">
-              <i class="fa-brands fa-facebook"></i>
-            </a>
-          </div>
-
-          <span class="footerTexto">
-            © 2026 Mondialle Imobiliária. Todos os direitos reservados.
-          </span>
-        </div>
-
-        <div class="footerIndices">
-          <h3>Navegação</h3>
-          <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Venda</a></li>
-            <li><a href="#">Locação</a></li>
-            <li><a href="#">Sobre a Mondialle</a></li>
-            <li><a href="#">Contato</a></li>
-          </ul>
-        </div>
-
-        <div class="footerindices">
-          <h3>Contato</h3>
-          <ul class="footerContato">
-            <li>Email - mondialleimobiliaria@gmail.com</li>
-            <li>Telefone - (42) 9982-8281</li>
-            <li>
-              Localização - Rua Floriano Peixoto, 180 sala 155 - Centro, União
-              da Vitória
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="creditosFooter">
-        Design e Desenvolvimento do site por
-        <span>Emmanuel Scharnoski Correia</span>
-      </div>
-
-      <div class="mondialleGrandeFooter">MONDIALLE</div>
-    </footer>
-
-    <script src="/assets/js/home.js"></script>
-  </body>
 </html>

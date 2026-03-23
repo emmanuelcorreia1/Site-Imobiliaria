@@ -1,0 +1,198 @@
+<section class="busca searchSection">
+  <div class="searchHeading">
+    <span class="sectionEyebrow">Busca inteligente</span>
+    <h2><%= tituloBusca %></h2>
+  </div>
+
+  <form class="caixaBusca propertySearchForm" action="<%= acao %>" method="get">
+    <div class="gridBuscaCima">
+      <div class="dropdownFiltro" data-dropdown>
+        <button class="dropdownAlternar" type="button" data-dropdown-toggle>
+          <span>Finalidade</span>
+          <span class="iconeSeta">▼</span>
+        </button>
+
+        <div class="dropdownList">
+          <div class="dropdownBase">
+            <div class="checkboxWrap">
+              <% catalogo.finalidades.forEach((finalidade) => { %>
+                <label class="checkboxLabel">
+                  <input
+                    type="checkbox"
+                    name="finalidade"
+                    value="<%= finalidade %>"
+                    <%= busca.filtros.finalidade.includes(finalidade) ? "checked" : "" %>
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto"><%= finalidade === "venda" ? "Venda" : "Locacao" %></span>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdownFiltro" data-dropdown>
+        <button class="dropdownAlternar" type="button" data-dropdown-toggle>
+          <span>Categoria</span>
+          <span class="iconeSeta">▼</span>
+        </button>
+
+        <div class="dropdownList">
+          <div class="dropdownBase">
+            <div class="checkboxWrap">
+              <% catalogo.categorias.forEach((categoria) => { %>
+                <label class="checkboxLabel">
+                  <input
+                    type="checkbox"
+                    name="categoria"
+                    value="<%= categoria %>"
+                    <%= busca.filtros.categoria.includes(categoria) ? "checked" : "" %>
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto"><%= categoria %></span>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdownFiltro" data-dropdown>
+        <button class="dropdownAlternar" type="button" data-dropdown-toggle>
+          <span>Cidade</span>
+          <span class="iconeSeta">▼</span>
+        </button>
+
+        <div class="dropdownList">
+          <div class="dropdownBase">
+            <div class="checkboxWrap">
+              <% catalogo.cidades.forEach((cidade) => { %>
+                <label class="checkboxLabel">
+                  <input
+                    type="checkbox"
+                    name="cidade"
+                    value="<%= cidade %>"
+                    <%= busca.filtros.cidade.includes(cidade) ? "checked" : "" %>
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto"><%= cidade %></span>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdownFiltro" data-dropdown>
+        <button class="dropdownAlternar" type="button" data-dropdown-toggle>
+          <span>Bairro</span>
+          <span class="iconeSeta">▼</span>
+        </button>
+
+        <div class="dropdownList">
+          <div class="dropdownBase">
+            <div class="checkboxWrap">
+              <% catalogo.bairros.forEach((bairro) => { %>
+                <label class="checkboxLabel">
+                  <input
+                    type="checkbox"
+                    name="bairro"
+                    value="<%= bairro %>"
+                    <%= busca.filtros.bairro.includes(bairro) ? "checked" : "" %>
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto"><%= bairro %></span>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdownFiltro" data-dropdown>
+        <button class="dropdownAlternar" type="button" data-dropdown-toggle>
+          <span>Quartos</span>
+          <span class="iconeSeta">▼</span>
+        </button>
+
+        <div class="dropdownList">
+          <div class="dropdownBase">
+            <div class="checkboxWrap">
+              <% catalogo.quartos.forEach((quarto) => { %>
+                <label class="checkboxLabel">
+                  <input
+                    type="checkbox"
+                    name="quartos"
+                    value="<%= quarto %>"
+                    <%= busca.filtros.quartos.includes(quarto) ? "checked" : "" %>
+                  />
+                  <span class="checkboxCustom"></span>
+                  <span class="checkboxTexto"><%= quarto %> quarto<%= quarto > 1 ? "s" : "" %></span>
+                </label>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gridBuscaBaixo">
+      <div class="filtroPreco">
+        <div class="valores">
+          <div class="valorBox" data-price-min-label>R$ 0</div>
+          <div class="valorBox" data-price-max-label>R$ <%= catalogo.precoMaximo.toLocaleString("pt-BR") %></div>
+        </div>
+
+        <div class="divSlider">
+          <div class="slider"></div>
+          <div class="sliderRange" data-slider-range></div>
+
+          <input
+            type="range"
+            min="0"
+            max="<%= catalogo.precoMaximo %>"
+            value="<%= busca.filtros.precoMinimo %>"
+            step="500"
+            class="inputRange"
+            data-range-min
+          />
+
+          <input
+            type="range"
+            min="0"
+            max="<%= catalogo.precoMaximo %>"
+            value="<%= busca.filtros.precoMaximo === Number.MAX_SAFE_INTEGER ? catalogo.precoMaximo : busca.filtros.precoMaximo %>"
+            step="500"
+            class="inputRange"
+            data-range-max
+          />
+
+          <input type="hidden" name="precoMin" value="<%= busca.filtros.precoMinimo %>" data-range-min-hidden />
+          <input
+            type="hidden"
+            name="precoMax"
+            value="<%= busca.filtros.precoMaximo === Number.MAX_SAFE_INTEGER ? catalogo.precoMaximo : busca.filtros.precoMaximo %>"
+            data-range-max-hidden
+          />
+        </div>
+      </div>
+
+      <div class="campoCodigo">
+        <input
+          type="text"
+          placeholder="Codigo do imovel"
+          class="inputCodigo"
+          name="codigo"
+          value="<%= consulta.codigo || '' %>"
+          maxlength="10"
+        />
+      </div>
+
+      <div class="quickActions">
+        <button type="submit" class="btnBuscar"><%= textoBotao %></button>
+        <a href="<%= acao %>" class="btnSecondary">Limpar filtros</a>
+      </div>
+    </div>
+  </form>
+</section>
