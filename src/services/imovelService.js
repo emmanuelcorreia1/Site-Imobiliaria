@@ -117,6 +117,18 @@ function obterOpcoesCatalogo() {
       return String(a).localeCompare(String(b));
     });
 
+  const contarValores = (chave, filtro = null) =>
+    imoveis.reduce((acumulado, imovel) => {
+      const valor = imovel[chave];
+
+      if (filtro && !filtro(valor)) {
+        return acumulado;
+      }
+
+      acumulado[valor] = (acumulado[valor] || 0) + 1;
+      return acumulado;
+    }, {});
+
   return {
     finalidades: valoresUnicos(imoveis.map((imovel) => imovel.finalidade)),
     categorias: valoresUnicos(imoveis.map((imovel) => imovel.categoria)),
@@ -125,6 +137,13 @@ function obterOpcoesCatalogo() {
     quartos: valoresUnicos(
       imoveis.map((imovel) => imovel.quartos).filter((quartos) => quartos > 0),
     ),
+    contagens: {
+      finalidades: contarValores("finalidade"),
+      categorias: contarValores("categoria"),
+      cidades: contarValores("cidade"),
+      bairros: contarValores("bairro"),
+      quartos: contarValores("quartos", (quartos) => quartos > 0),
+    },
     precoMaximo: Math.max(...imoveis.map((imovel) => imovel.preco)),
   };
 }

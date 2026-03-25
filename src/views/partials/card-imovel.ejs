@@ -1,0 +1,37 @@
+<article class="cardImovel">
+
+    <span class="propriedadeTag"><%= imovel.finalidade === "venda" ? "Venda" : "Locacao" %></span>
+    <a href="/imoveis/<%= imovel.codigo %>">
+      <img src="<%= imovel.imagem %>" alt="<%= imovel.titulo %>" class="imagemImovel"/>
+    </a>
+
+  <div class="infoCard">
+    <div class="info">
+      <span><%= imovel.categoria %></span>
+      <span>Cod. <%= imovel.codigo %></span>
+    </div>
+
+    <div class="nomeCard">
+      <div>
+        <a href="/imoveis/<%= imovel.codigo %>"><%= imovel.titulo %></a>
+        <p><%= imovel.cidade %> - <%= imovel.bairro %></p>
+      </div>
+      <span><i class="fa-solid fa-ruler-combined"></i> <%= imovel.area %> m²</span>
+    </div>
+
+    <div class="atributos">
+      <span><i class="fa-solid fa-bed"></i> <%= imovel.quartos %></span>
+      <span><i class="fa-solid fa-bath"></i> <%= imovel.banheiros %></span>
+      <span><i class="fa-solid fa-car"></i> <%= imovel.vagas %></span>
+    </div>
+
+    <div class="preco">
+      <p>Preço</p>
+      <strong>
+        R$ <%= imovel.preco.toLocaleString("pt-BR") %>
+        <%= imovel.finalidade === "locacao" ? "/mes" : "" %>
+      </strong>
+    </div>
+    <a href="/imoveis/<%= imovel.codigo %>" class="verDetalhes">Ver detalhes</a>
+  </div>
+</article>

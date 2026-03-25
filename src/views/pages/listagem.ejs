@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <%- include("../partials/cabecalho-head", { titulo }) %>
+    <%- include("../partials/header-head", { titulo }) %>
   </head>
   <body>
-    <%- include("../partials/cabecalho", { pagina, empresa }) %>
+    <%- include("../partials/header", { pagina, empresa }) %>
 
     <main class="internalPage">
       <section class="pageHero">
@@ -46,6 +46,6 @@
     </main>
 
     <%- include("../partials/rodape", { empresa }) %>
-    <script src="/js/interface.js"></script>
+    <script src="/assets/js/interface.js"></script>
   </body>
 </html>

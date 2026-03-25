@@ -146,4 +146,13 @@ router.get("/contato", (req, res) => {
   );
 });
 
+router.get("/anunciar", (req, res) => {
+  res.render(
+    "pages/anunciar",
+    montarDadosBase("Anunciar imovel", {
+      pagina: "anunciar",
+    }),
+  );
+});
+
 module.exports = router;

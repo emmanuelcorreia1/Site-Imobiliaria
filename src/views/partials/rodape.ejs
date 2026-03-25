@@ -3,26 +3,37 @@
     <div class="footerMarca">
       <img
         src="/assets/images/Logo branca sem fundo.png"
-        alt="Logo Mondialle"
+        alt="footer Logo"
         class="footerLogo"
       />
 
       <p>
-        A <%= empresa.nome %> conecta pessoas a oportunidades de venda e locacao
-        com transparencia, acompanhamento proximo e foco no melhor negocio.
+        <%= empresa.nome %> conecta pessoas as melhores oportunidades do
+        mercado imobiliario, com transparencia, seguranca e atendimento
+        personalizado em cada negociacao.
       </p>
 
       <div class="redeSocial">
-        <a href="<%= empresa.instagram %>" aria-label="Instagram">
+        <a
+          href="<%= empresa.instagram %>"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="<%= empresa.facebook %>" aria-label="Facebook">
+        <a
+          href="<%= empresa.facebook %>"
+          aria-label="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i class="fa-brands fa-facebook"></i>
         </a>
       </div>
 
       <span class="footerTexto">
-        (c) 2026 <%= empresa.nome %>. Todos os direitos reservados.
+        © 2026 <%= empresa.nome %>. Todos os direitos reservados.
       </span>
     </div>
 
@@ -32,7 +43,7 @@
         <li><a href="/">Inicio</a></li>
         <li><a href="/venda">Venda</a></li>
         <li><a href="/locacao">Locacao</a></li>
-        <li><a href="/imoveis">Catalogo</a></li>
+        <li><a href="/sobre">Sobre a Mondialle</a></li>
         <li><a href="/contato">Contato</a></li>
       </ul>
     </div>
@@ -48,7 +59,8 @@
   </div>
 
   <div class="creditosFooter">
-    Plataforma web da Mondialle com busca, catalogo e paginas institucionais.
+    Design e Desenvolvimento do site por
+    <span>Emmanuel Scharnoski Correia</span>
   </div>
 
   <div class="mondialleGrandeFooter">MONDIALLE</div>

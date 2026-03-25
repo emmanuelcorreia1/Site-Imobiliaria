@@ -1,15 +1,11 @@
-<section class="busca searchSection">
-  <div class="searchHeading">
-    <span class="sectionEyebrow">Busca inteligente</span>
-    <h2><%= tituloBusca %></h2>
-  </div>
-
   <form class="caixaBusca propertySearchForm" action="<%= acao %>" method="get">
     <div class="gridBuscaCima">
-      <div class="dropdownFiltro" data-dropdown>
+      <div class="dropdownFiltro" data-dropdown data-dropdown-label="Finalidade">
         <button class="dropdownAlternar" type="button" data-dropdown-toggle>
-          <span>Finalidade</span>
-          <span class="iconeSeta">▼</span>
+          <span class="dropdownTexto" data-dropdown-text>
+            <%= busca.filtros.finalidade.length ? `(${busca.filtros.finalidade.length}) Selecionados` : "Finalidade" %>
+          </span>
+          <span class="iconeSeta"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
 
         <div class="dropdownList">
@@ -22,9 +18,12 @@
                     name="finalidade"
                     value="<%= finalidade %>"
                     <%= busca.filtros.finalidade.includes(finalidade) ? "checked" : "" %>
+                    data-dropdown-input
                   />
                   <span class="checkboxCustom"></span>
-                  <span class="checkboxTexto"><%= finalidade === "venda" ? "Venda" : "Locacao" %></span>
+                  <span class="checkboxTexto">
+                    <%= finalidade === "venda" ? "Venda" : "Locacao" %>(<%= catalogo.contagens.finalidades[finalidade] || 0 %>)
+                  </span>
                 </label>
               <% }) %>
             </div>
@@ -32,10 +31,12 @@
         </div>
       </div>
 
-      <div class="dropdownFiltro" data-dropdown>
+      <div class="dropdownFiltro" data-dropdown data-dropdown-label="Categoria">
         <button class="dropdownAlternar" type="button" data-dropdown-toggle>
-          <span>Categoria</span>
-          <span class="iconeSeta">▼</span>
+          <span class="dropdownTexto" data-dropdown-text>
+            <%= busca.filtros.categoria.length ? `(${busca.filtros.categoria.length}) Selecionados` : "Categoria" %>
+          </span>
+          <span class="iconeSeta"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
 
         <div class="dropdownList">
@@ -48,9 +49,10 @@
                     name="categoria"
                     value="<%= categoria %>"
                     <%= busca.filtros.categoria.includes(categoria) ? "checked" : "" %>
+                    data-dropdown-input
                   />
                   <span class="checkboxCustom"></span>
-                  <span class="checkboxTexto"><%= categoria %></span>
+                  <span class="checkboxTexto"><%= categoria %>(<%= catalogo.contagens.categorias[categoria] || 0 %>)</span>
                 </label>
               <% }) %>
             </div>
@@ -58,10 +60,12 @@
         </div>
       </div>
 
-      <div class="dropdownFiltro" data-dropdown>
+      <div class="dropdownFiltro" data-dropdown data-dropdown-label="Cidade">
         <button class="dropdownAlternar" type="button" data-dropdown-toggle>
-          <span>Cidade</span>
-          <span class="iconeSeta">▼</span>
+          <span class="dropdownTexto" data-dropdown-text>
+            <%= busca.filtros.cidade.length ? `(${busca.filtros.cidade.length}) Selecionados` : "Cidade" %>
+          </span>
+          <span class="iconeSeta"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
 
         <div class="dropdownList">
@@ -74,9 +78,10 @@
                     name="cidade"
                     value="<%= cidade %>"
                     <%= busca.filtros.cidade.includes(cidade) ? "checked" : "" %>
+                    data-dropdown-input
                   />
                   <span class="checkboxCustom"></span>
-                  <span class="checkboxTexto"><%= cidade %></span>
+                  <span class="checkboxTexto"><%= cidade %>(<%= catalogo.contagens.cidades[cidade] || 0 %>)</span>
                 </label>
               <% }) %>
             </div>
@@ -84,10 +89,12 @@
         </div>
       </div>
 
-      <div class="dropdownFiltro" data-dropdown>
+      <div class="dropdownFiltro" data-dropdown data-dropdown-label="Bairro">
         <button class="dropdownAlternar" type="button" data-dropdown-toggle>
-          <span>Bairro</span>
-          <span class="iconeSeta">▼</span>
+          <span class="dropdownTexto" data-dropdown-text>
+            <%= busca.filtros.bairro.length ? `(${busca.filtros.bairro.length}) Selecionados` : "Bairro" %>
+          </span>
+          <span class="iconeSeta"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
 
         <div class="dropdownList">
@@ -100,9 +107,10 @@
                     name="bairro"
                     value="<%= bairro %>"
                     <%= busca.filtros.bairro.includes(bairro) ? "checked" : "" %>
+                    data-dropdown-input
                   />
                   <span class="checkboxCustom"></span>
-                  <span class="checkboxTexto"><%= bairro %></span>
+                  <span class="checkboxTexto"><%= bairro %>(<%= catalogo.contagens.bairros[bairro] || 0 %>)</span>
                 </label>
               <% }) %>
             </div>
@@ -110,10 +118,12 @@
         </div>
       </div>
 
-      <div class="dropdownFiltro" data-dropdown>
+      <div class="dropdownFiltro" data-dropdown data-dropdown-label="Quartos">
         <button class="dropdownAlternar" type="button" data-dropdown-toggle>
-          <span>Quartos</span>
-          <span class="iconeSeta">▼</span>
+          <span class="dropdownTexto" data-dropdown-text>
+            <%= busca.filtros.quartos.length ? `(${busca.filtros.quartos.length}) Selecionados` : "Quartos" %>
+          </span>
+          <span class="iconeSeta"><i class="fa-solid fa-chevron-down"></i></span>
         </button>
 
         <div class="dropdownList">
@@ -126,9 +136,12 @@
                     name="quartos"
                     value="<%= quarto %>"
                     <%= busca.filtros.quartos.includes(quarto) ? "checked" : "" %>
+                    data-dropdown-input
                   />
                   <span class="checkboxCustom"></span>
-                  <span class="checkboxTexto"><%= quarto %> quarto<%= quarto > 1 ? "s" : "" %></span>
+                  <span class="checkboxTexto">
+                    <%= quarto %> quarto<%= quarto > 1 ? "s" : "" %>(<%= catalogo.contagens.quartos[quarto] || 0 %>)
+                  </span>
                 </label>
               <% }) %>
             </div>
@@ -178,6 +191,10 @@
         </div>
       </div>
 
+      <div class="botaoBuscar">
+        <button type="submit" class="btnBuscar"><%= textoBotao %></button>
+      </div>
+
       <div class="campoCodigo">
         <input
           type="text"
@@ -185,13 +202,8 @@
           class="inputCodigo"
           name="codigo"
           value="<%= consulta.codigo || '' %>"
-          maxlength="10"
+          maxlength="3"
         />
-      </div>
-
-      <div class="quickActions">
-        <button type="submit" class="btnBuscar"><%= textoBotao %></button>
-        <a href="<%= acao %>" class="btnSecondary">Limpar filtros</a>
       </div>
     </div>
   </form>

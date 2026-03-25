@@ -188,6 +188,7 @@
   align-items: center;
   justify-content: flex-end;
   flex: 1 1 360px;
+  margin-top: 28px;
 }
 
 .quickActions .btnBuscar,
@@ -202,6 +203,10 @@
 
 .btnSecondary {
   background: transparent;
+}
+
+.announceActions {
+  justify-content: flex-start;
 }
 
 .menuHeader a.is-active {

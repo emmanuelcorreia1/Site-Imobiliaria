@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <%- include("../partials/header-head", { titulo }) %>
+  </head>
+  <body>
+    <%- include("../partials/header", { pagina, empresa }) %>
+
+    <main class="internalPage">
+      <section class="pageHero">
+        <span class="sectionEyebrow">Captacao Mondialle</span>
+        <h1>Anuncie seu imovel</h1>
+        <p>
+          Quer vender ou alugar com apoio profissional? Envie as informacoes do seu
+          imovel para a equipe Mondialle e retornaremos para orientar avaliacao,
+          fotos, documentacao e estrategia de divulgacao.
+        </p>
+      </section>
+
+      <section class="contentSection infoGrid">
+        <article class="infoCard">
+          <h2>1. Envie os dados basicos</h2>
+          <p>
+            Informe tipo do imovel, cidade, bairro, metragem, quantidade de
+            quartos, vagas e a finalidade desejada: venda ou locacao.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h2>2. Compartilhe fotos e detalhes</h2>
+          <p>
+            Fotos, valor pretendido, pontos fortes e situacao da documentacao
+            ajudam a equipe a montar uma apresentacao mais completa.
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h2>3. Receba o retorno da imobiliaria</h2>
+          <p>
+            Depois do contato inicial, a Mondialle pode alinhar visita, analise
+            comercial e proximos passos para publicar o anuncio.
+          </p>
+        </article>
+      </section>
+
+      <section class="contentSection">
+        <div class="sectionHeading">
+          <div>
+            <span class="sectionEyebrow">Canais de envio</span>
+            <h2>Fale com a equipe para anunciar</h2>
+          </div>
+        </div>
+
+        <div class="infoGrid">
+          <article class="infoCard">
+            <h2>Telefone</h2>
+            <p><%= empresa.telefone %></p>
+          </article>
+
+          <article class="infoCard">
+            <h2>Email</h2>
+            <p><%= empresa.email %></p>
+          </article>
+
+          <article class="infoCard">
+            <h2>Atendimento presencial</h2>
+            <p><%= empresa.endereco %></p>
+          </article>
+        </div>
+
+        <div class="quickActions announceActions">
+          <a class="btnBuscar" href="/contato">Ir para contato</a>
+          <a class="btnSecondary" href="/imoveis">Ver catalogo atual</a>
+        </div>
+      </section>
+    </main>
+
+    <%- include("../partials/rodape", { empresa }) %>
+  </body>
+</html>

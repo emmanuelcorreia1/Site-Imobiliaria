@@ -1,11 +1,34 @@
 const menusSuspensos = document.querySelectorAll("[data-dropdown]");
 
+function atualizarTextoDropdown(menuSuspenso) {
+  const rotuloBase = menuSuspenso.dataset.dropdownLabel || "Selecionar";
+  const campoTexto = menuSuspenso.querySelector("[data-dropdown-text]");
+  const marcados = menuSuspenso.querySelectorAll("[data-dropdown-input]:checked");
+
+  if (!campoTexto) {
+    return;
+  }
+
+  campoTexto.textContent = marcados.length
+    ? `(${marcados.length}) Selecionados`
+    : rotuloBase;
+}
+
 menusSuspensos.forEach((menuSuspenso) => {
   const botaoAlternar = menuSuspenso.querySelector("[data-dropdown-toggle]");
+  const opcoes = menuSuspenso.querySelectorAll("[data-dropdown-input]");
 
   botaoAlternar?.addEventListener("click", () => {
     menuSuspenso.classList.toggle("ativo");
   });
+
+  opcoes.forEach((opcao) => {
+    opcao.addEventListener("change", () => {
+      atualizarTextoDropdown(menuSuspenso);
+    });
+  });
+
+  atualizarTextoDropdown(menuSuspenso);
 });
 
 document.addEventListener("click", (event) => {
