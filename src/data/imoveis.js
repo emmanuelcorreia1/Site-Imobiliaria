@@ -54,7 +54,7 @@ const imoveis = [
     imagem: "/assets/images/casa01.jpg",
     descricao:
       "Ideal para escritorio ou atendimento, com excelente visibilidade e fluxo de pessoas.",
-    destaque: false,
+    destaque: true,
   },
   {
     id: 4,
@@ -111,7 +111,7 @@ const imoveis = [
     imagem: "/assets/images/casa01.jpg",
     descricao:
       "Opcao pratica para quem busca mobilidade e baixo custo de manutencao em regiao consolidada.",
-    destaque: false,
+    destaque: true,
   },
 ];
 

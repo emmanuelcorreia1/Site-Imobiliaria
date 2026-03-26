@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
     montarDadosBase("Mondialle Imobiliaria", {
       busca,
       catalogo,
-      imoveisDestaque: obterImoveisEmDestaque(3),
+      imoveisDestaque: obterImoveisEmDestaque(6),
       pagina: "home",
       consulta: req.query,
     }),

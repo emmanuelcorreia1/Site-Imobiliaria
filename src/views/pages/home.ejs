@@ -39,18 +39,7 @@
             </div>
           </div>
         </section>
-
-        <section class="resultsSection">
-          <div class="sectionHeading">
-            <div>
-              <span class="sectionEyebrow">Resultado da busca</span>
-              <h2>
-                <%= busca.itens.length %> imoveis encontrados
-              </h2>
-            </div>
-            <a href="/api/imoveis" class="sectionLink">API JSON</a>
-          </div>
-
+        
           <% if (busca.itens.length) { %>
             <div class="propertyGrid">
               <% busca.itens.forEach((imovel)=> { %>
