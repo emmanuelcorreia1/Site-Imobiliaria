@@ -1,0 +1,194 @@
+.tituloPagina h1{
+    font-family: 'Poppins-medium';
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    text-shadow: 0px 0px 10px #000000;
+}
+
+.divPrincipal2 {
+    background-color: var(--color-surface);
+    width: 100%;
+    height: 80%;
+    position: relative;
+    z-index: 2;
+    top: -200px;
+}
+
+.cirBlur2 {
+    position: absolute;
+    width: 1200px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(227, 227, 227, 0.9);
+    filter: blur(90px);
+    right: 140px;
+    top: 320px;
+
+    z-index: 0;
+}
+
+.resultadoTitulo h2{
+    color: var(--color-text-dark);
+    padding-top: 218px;
+    text-align: center;
+    font-size: 17px;
+    background-color: var(--color-accent);
+    margin-left: 42%;
+    margin-right: 42%;
+    border-radius: 15px;
+    padding-bottom: 8px;
+}
+
+
+.destaque {
+    padding: 30px 70px;
+    visibility: inherit;
+}
+
+.tituloDestaques {
+    color: var(--color-text-dark);
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Poppins-bold';
+    margin-bottom: 50px;
+
+}
+
+.gridImoveis {
+    color: var(--color-text-dark);
+    display: grid;
+    grid-template-columns: repeat(4, 340px);
+    justify-content: center;
+    gap: 20px;
+}
+
+.cardImovel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 430px;
+}
+
+.propriedadeTag{
+    text-align: center;
+    border: none;
+    margin: 0 auto;
+    padding: 0px 20px;
+    background-color: rgb(203, 203, 203);
+    border-radius: 10px;
+    color: rgb(106, 106, 106);
+    font-family: var(--font-medium);
+    font-size: 15px;
+    margin-bottom: -10px;
+}
+
+.imagemImovel {
+    width: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: -10px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    color: #d78f00;
+    font-family: var(--font-medium);
+    font-weight: 600;
+}
+
+.nomeCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.nomeCard a {
+    font-size: 21px;
+    font-family: 'Poppins-bold';
+    margin: 0;
+    line-height: 30px;
+    color: #000;
+}
+
+.nomeCard p {
+    color: var(--color-descricao);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.nomeCard span {
+    color: var(--color-descricao);
+    margin-right: 20px;
+    font-family: var(--font-medium);
+    font-weight: 600;
+    font-family: 18px;
+}
+
+.atributos {
+    display: flex;
+    gap: 30px;
+    font-size: 15px;
+    margin-left: 20px;
+    color: var(--color-descricao);
+    font-family: var(--font-medium);
+    word-spacing: 8px;
+}
+
+.preco {
+    margin-left: 15px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    font-size: 17px;
+}
+
+.verDetalhes{
+    display: block;
+    text-align: center;
+    margin: 30px 15px 50px;    
+    color: var(--color-text-dark); 
+    padding: 14px 90px;
+    border-radius: 999px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.433) 0px 0px 4px 1px;
+    font-family: var(--font-medium);
+    font-size: 18px;
+    background-color: var(--color-accent);
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.verDetalhes:hover{
+    scale: 1.05;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.naoEncontrado{
+    color: var(--color-text-dark);
+    text-align: center;
+    padding: 40px 0px 100px 0px;
+}
+
+.naoEncontrado h3{
+    font-size: 30px;
+    font-family: 'Poppins-medium';
+}
+
+.naoEncontrado p{
+    font-size: 18px;
+}
