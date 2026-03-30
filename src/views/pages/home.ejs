@@ -38,19 +38,16 @@
               </div>
             </div>
           </div>
-        </section>
+      </main>
 
-        <section class="resultsSection">
-          <div class="sectionHeading">
-            <div>
-              <span class="sectionEyebrow">Resultado da busca</span>
-              <h2>
-                <%= busca.itens.length %> imoveis encontrados
-              </h2>
-            </div>
-            <a href="/api/imoveis" class="sectionLink">API JSON</a>
-          </div>
+      <%- include("../partials/rodape", { empresa }) %>
+        <script src="/assets/js/interface.js"></script>
+</body>
 
+</html>
+
+<!--     </section>
+        
           <% if (busca.itens.length) { %>
             <div class="propertyGrid">
               <% busca.itens.forEach((imovel)=> { %>
@@ -64,10 +61,4 @@
               </div>
               <% } %>
         </section>
-      </main>
-
-      <%- include("../partials/rodape", { empresa }) %>
-        <script src="/assets/js/interface.js"></script>
-</body>
-
-</html>
+-->

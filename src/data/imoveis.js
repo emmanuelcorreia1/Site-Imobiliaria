@@ -54,7 +54,7 @@ const imoveis = [
     imagem: "/assets/images/casa01.jpg",
     descricao:
       "Ideal para escritorio ou atendimento, com excelente visibilidade e fluxo de pessoas.",
-    destaque: false,
+    destaque: true,
   },
   {
     id: 4,
@@ -111,7 +111,45 @@ const imoveis = [
     imagem: "/assets/images/casa01.jpg",
     descricao:
       "Opcao pratica para quem busca mobilidade e baixo custo de manutencao em regiao consolidada.",
-    destaque: false,
+    destaque: true,
+  },
+  {
+    id: 7,
+    codigo: "007",
+    titulo: "Apartamento compacto para locacao",
+    finalidade: "locacao",
+    categoria: "Apartamento",
+    cidade: "Uniao da Vitoria",
+    bairro: "Nossa Senhora da Salete",
+    endereco: "Rua das maravilhas, 123",
+    quartos: 1,
+    banheiros: 1,
+    vagas: 1,
+    area: 48,
+    preco: 1450,
+    imagem: "/assets/images/casa01.jpg",
+    descricao:
+      "Opcao pratica para quem busca mobilidade e baixo custo de manutencao em regiao consolidada.",
+    destaque: true,
+  },
+  {
+    id: 8,
+    codigo: "008",
+    titulo: "Apartamento compacto para locacao",
+    finalidade: "venda",
+    categoria: "Apartamento",
+    cidade: "Uniao da Vitoria",
+    bairro: "Nossa Senhora da Salete",
+    endereco: "Rua das maravilhas, 123",
+    quartos: 1,
+    banheiros: 1,
+    vagas: 1,
+    area: 48,
+    preco: 1450,
+    imagem: "/assets/images/casa01.jpg",
+    descricao:
+      "Opcao pratica para quem busca mobilidade e baixo custo de manutencao em regiao consolidada.",
+    destaque: true,
   },
 ];
 

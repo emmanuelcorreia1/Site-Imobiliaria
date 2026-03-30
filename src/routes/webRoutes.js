@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
     montarDadosBase("Mondialle Imobiliaria", {
       busca,
       catalogo,
-      imoveisDestaque: obterImoveisEmDestaque(3),
+      imoveisDestaque: obterImoveisEmDestaque(6),
       pagina: "home",
       consulta: req.query,
     }),
@@ -49,9 +49,7 @@ router.get("/venda", (req, res) => {
   res.render(
     "pages/listagem",
     montarDadosBase("Imoveis a Venda", {
-      cabecalho: "Imoveis para venda",
-      introducao:
-        "Selecao de oportunidades para comprar com seguranca e apoio especializado.",
+      cabecalho: "Imóveis para venda",
       busca,
       catalogo: obterOpcoesCatalogo(),
       pagina: "venda",
@@ -67,8 +65,7 @@ router.get("/locacao", (req, res) => {
   res.render(
     "pages/listagem",
     montarDadosBase("Imoveis para Locacao", {
-      cabecalho: "Imoveis para locacao",
-      introducao: "Opcoes para morar ou operar seu negocio com mais praticidade.",
+      cabecalho: "Imóveis para locação",
       busca,
       catalogo: obterOpcoesCatalogo(),
       pagina: "locacao",
@@ -83,9 +80,7 @@ router.get("/imoveis", (req, res) => {
   res.render(
     "pages/listagem",
     montarDadosBase("Catalogo de Imoveis", {
-      cabecalho: "Catalogo completo",
-      introducao:
-        "Use os filtros para encontrar o imovel ideal para venda ou locacao.",
+      cabecalho: "Catálogo completo",
       busca,
       catalogo: obterOpcoesCatalogo(),
       pagina: "imoveis",
