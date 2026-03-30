@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <%- include("../partials/header-head", { titulo }) %>
-  </head>
-  <body>
-    <%- include("../partials/header", { pagina, empresa }) %>
 
-    <main class="internalPage">
-      <section class="pageHero">
-        <span class="sectionEyebrow">Catalogo Mondialle</span>
-        <h1><%= cabecalho %></h1>
-        <p><%= introducao %></p>
+<head>
+  <%- include("../partials/header-head", { titulo }) %>
+  <link rel="stylesheet" href="/assets/css/vendaLocacao.css">
+</head>
+
+<body>
+  <%- include("../partials/header", { pagina, empresa }) %>
+
+    <main class="vendaLocacao">
+      <section class="tituloPagina">
+        <h1>
+          <%= cabecalho %>
+        </h1>
+        <div class="cirBlur2"></div>
       </section>
+      
+      <%- include("../partials/form-busca", { acao: pagina==="venda" ? "/venda" : pagina==="locacao" ? "/locacao"
+        : "/imoveis" , busca, catalogo, consulta, textoBotao: "Atualizar busca" , tituloBusca: "Refine sua pesquisa" })
+        %>
+        <div class="divPrincipal2">
+          <section class="resultadoQuant">
+            <div class="result">
+              <div class="resultadoTitulo">
+                <h2>
+                  <%= busca.itens.length %> imoveis encontrados
+                </h2>
+              </div>
+            </div>
 
-      <%- include("../partials/form-busca", {
-        acao: pagina === "venda" ? "/venda" : pagina === "locacao" ? "/locacao" : "/imoveis",
-        busca,
-        catalogo,
-        consulta,
-        textoBotao: "Atualizar busca",
-        tituloBusca: "Refine sua pesquisa"
-      }) %>
-
-      <section class="resultsSection">
-        <div class="sectionHeading">
-          <div>
-            <span class="sectionEyebrow">Resultado</span>
-            <h2><%= busca.itens.length %> imoveis encontrados</h2>
-          </div>
+            <% if (busca.itens.length) { %>
+              <div class="destaque">
+                <div class="gridImoveis">
+                  <% busca.itens.forEach((imovel)=> { %>
+                    <%- include("../partials/card-imovel-pequeno", { imovel }) %>
+                      <% }) %>
+                </div>
+              </div>
+              <% } else { %>
+                <div class="naoEncontrado">
+                  <h3>Nenhum resultado encontrado.</h3>
+                  <p>Altere filtros, cidade ou faixa de preco para ver outras oportunidades.</p>
+                </div>
+                <% } %>
+          </section>
         </div>
-
-        <% if (busca.itens.length) { %>
-          <div class="propertyGrid">
-            <% busca.itens.forEach((imovel) => { %>
-              <%- include("../partials/card-imovel", { imovel }) %>
-            <% }) %>
-          </div>
-        <% } else { %>
-          <div class="emptyState">
-            <h3>Nenhum resultado encontrado.</h3>
-            <p>Altere filtros, cidade ou faixa de preco para ver outras oportunidades.</p>
-          </div>
-        <% } %>
-      </section>
     </main>
 
     <%- include("../partials/rodape", { empresa }) %>
-    <script src="/assets/js/interface.js"></script>
-  </body>
+      <script src="/assets/js/interface.js"></script>
+</body>
+
 </html>
