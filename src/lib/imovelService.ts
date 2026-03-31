@@ -1,6 +1,23 @@
-const imoveis = require("../data/imoveis");
+import { imoveis } from "./imoveis";
+import type {
+  BuscaImoveis,
+  ConsultaImoveis,
+  FiltrosImoveis,
+  Imovel,
+  OpcoesCatalogo,
+} from "./types";
 
-function normalizarTexto(valor = "") {
+function obterValorSimples(
+  valor?: string | string[] | number,
+): string | number | undefined {
+  if (Array.isArray(valor)) {
+    return valor[0];
+  }
+
+  return valor;
+}
+
+function normalizarTexto(valor: string | string[] | number = ""): string {
   return String(valor)
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -8,7 +25,7 @@ function normalizarTexto(valor = "") {
     .trim();
 }
 
-function transformarEmLista(valor) {
+function transformarEmLista(valor?: string | string[]): string[] {
   if (!valor) {
     return [];
   }
@@ -23,7 +40,7 @@ function transformarEmLista(valor) {
     .filter(Boolean);
 }
 
-function textoCorresponde(candidato, valoresAceitos) {
+function textoCorresponde(candidato: string, valoresAceitos: string[]): boolean {
   if (!valoresAceitos.length) {
     return true;
   }
@@ -34,7 +51,11 @@ function textoCorresponde(candidato, valoresAceitos) {
   );
 }
 
-function obterFiltros(consulta = {}) {
+export function obterFiltros(consulta: ConsultaImoveis = {}): FiltrosImoveis {
+  const precoMin = obterValorSimples(consulta.precoMin || consulta.minPrice);
+  const precoMax = obterValorSimples(consulta.precoMax || consulta.maxPrice);
+  const codigo = obterValorSimples(consulta.codigo || consulta.code);
+
   return {
     finalidade: transformarEmLista(consulta.finalidade || consulta.purpose),
     categoria: transformarEmLista(consulta.categoria || consulta.category),
@@ -43,15 +64,13 @@ function obterFiltros(consulta = {}) {
     quartos: transformarEmLista(consulta.quartos || consulta.bedrooms)
       .map(Number)
       .filter(Boolean),
-    precoMinimo: Number(consulta.precoMin || consulta.minPrice || 0),
-    precoMaximo: Number(
-      consulta.precoMax || consulta.maxPrice || Number.MAX_SAFE_INTEGER,
-    ),
-    codigo: normalizarTexto(consulta.codigo || consulta.code || ""),
+    precoMinimo: Number(precoMin || 0),
+    precoMaximo: Number(precoMax || Number.MAX_SAFE_INTEGER),
+    codigo: normalizarTexto(codigo || ""),
   };
 }
 
-function filtrarImoveis(consulta = {}) {
+export function filtrarImoveis(consulta: ConsultaImoveis = {}): BuscaImoveis {
   const filtros = obterFiltros(consulta);
 
   const itens = imoveis.filter((imovel) => {
@@ -92,23 +111,23 @@ function filtrarImoveis(consulta = {}) {
   return { itens, filtros };
 }
 
-function obterImovelPorCodigo(codigo) {
+export function obterImovelPorCodigo(codigo: string): Imovel | undefined {
   const codigoNormalizado = normalizarTexto(codigo);
   return imoveis.find(
     (imovel) => normalizarTexto(imovel.codigo) === codigoNormalizado,
   );
 }
 
-function obterImovelPorId(id) {
+export function obterImovelPorId(id: string | number): Imovel | undefined {
   return imoveis.find((imovel) => imovel.id === Number(id));
 }
 
-function obterImoveisEmDestaque(limite = 3) {
+export function obterImoveisEmDestaque(limite = 3): Imovel[] {
   return imoveis.filter((imovel) => imovel.destaque).slice(0, limite);
 }
 
-function obterOpcoesCatalogo() {
-  const valoresUnicos = (valores) =>
+export function obterOpcoesCatalogo(): OpcoesCatalogo {
+  const valoresUnicos = <T extends string | number>(valores: T[]): T[] =>
     [...new Set(valores)].sort((a, b) => {
       if (typeof a === "number" && typeof b === "number") {
         return a - b;
@@ -117,15 +136,19 @@ function obterOpcoesCatalogo() {
       return String(a).localeCompare(String(b));
     });
 
-  const contarValores = (chave, filtro = null) =>
-    imoveis.reduce((acumulado, imovel) => {
+  const contarValores = <T extends keyof Imovel>(
+    chave: T,
+    filtro: ((valor: Imovel[T]) => boolean) | null = null,
+  ): Record<string, number> =>
+    imoveis.reduce<Record<string, number>>((acumulado, imovel) => {
       const valor = imovel[chave];
 
       if (filtro && !filtro(valor)) {
         return acumulado;
       }
 
-      acumulado[valor] = (acumulado[valor] || 0) + 1;
+      const chaveTexto = String(valor);
+      acumulado[chaveTexto] = (acumulado[chaveTexto] || 0) + 1;
       return acumulado;
     }, {});
 
@@ -147,13 +170,3 @@ function obterOpcoesCatalogo() {
     precoMaximo: Math.max(...imoveis.map((imovel) => imovel.preco)),
   };
 }
-
-module.exports = {
-  filtrarImoveis,
-  obterFiltros,
-  obterImovelPorCodigo,
-  obterImovelPorId,
-  obterImoveisEmDestaque,
-  obterOpcoesCatalogo,
-  imoveis,
-};

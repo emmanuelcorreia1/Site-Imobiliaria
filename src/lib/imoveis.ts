@@ -1,4 +1,6 @@
-const imoveis = [
+import type { Imovel } from "./types";
+
+export const imoveis: Imovel[] = [
   {
     id: 1,
     codigo: "001",
@@ -64,7 +66,7 @@ const imoveis = [
     categoria: "Terreno",
     cidade: "Uniao da Vitoria",
     bairro: "Limeira",
-    endereco: "Rua que não exite, 987",
+    endereco: "Rua que nao existe, 987",
     quartos: 0,
     banheiros: 0,
     vagas: 0,
@@ -135,7 +137,7 @@ const imoveis = [
   {
     id: 8,
     codigo: "008",
-    titulo: "Apartamento compacto para locacao",
+    titulo: "Apartamento compacto para venda",
     finalidade: "venda",
     categoria: "Apartamento",
     cidade: "Uniao da Vitoria",
@@ -145,12 +147,10 @@ const imoveis = [
     banheiros: 1,
     vagas: 1,
     area: 48,
-    preco: 1450,
+    preco: 145000,
     imagem: "/assets/images/casa01.jpg",
     descricao:
       "Opcao pratica para quem busca mobilidade e baixo custo de manutencao em regiao consolidada.",
     destaque: true,
   },
 ];
-
-module.exports = imoveis;
