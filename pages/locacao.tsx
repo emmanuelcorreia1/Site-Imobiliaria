@@ -1,6 +1,6 @@
 import type { GetServerSideProps } from "next";
-import ListagemPage from "../src/components/ListagemPage";
-import type { ListagemPageProps } from "../src/components/ListagemPage";
+import ListagemPage from "../src/components/ListagemPaginas";
+import type { ListagemPageProps } from "../src/components/ListagemPaginas";
 import { filtrarImoveis, obterOpcoesCatalogo } from "../src/lib/imovelService";
 
 export default function LocacaoPage(props: ListagemPageProps) {

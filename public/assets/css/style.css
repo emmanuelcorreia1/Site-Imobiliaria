@@ -592,7 +592,7 @@ section.busca {
     font-weight: 600;
 }
 
-.nomeCard {
+.nomeCards {
     display: flex;
     align-items: center;
     justify-content: space-between;

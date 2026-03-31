@@ -1,6 +1,6 @@
 import Layout from "./Layout";
 import SearchForm from "./SearchForm";
-import PropertyCard from "./PropertyCard2";
+import ImovelCard from "./ImovelCard2";
 import { empresa } from "../lib/empresa";
 import type { BuscaImoveis, ConsultaImoveis, OpcoesCatalogo } from "../lib/types";
 
@@ -53,7 +53,7 @@ export default function ListagemPage({
               <div className="destaque2">
                 <div className="gridImoveis2">
                   {busca.itens.map((imovel) => (
-                    <PropertyCard key={imovel.id} imovel={imovel} />
+                    <ImovelCard key={imovel.id} imovel={imovel} />
                   ))}
                 </div>
               </div>

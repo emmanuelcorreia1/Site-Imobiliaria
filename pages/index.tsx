@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from "next";
 import Layout from "../src/components/Layout";
 import SearchForm from "../src/components/SearchForm";
-import PropertyCard from "../src/components/PropertyCard";
+import ImovelCard from "../src/components/ImovelCard";
 import { empresa } from "../src/lib/empresa";
 import {
   filtrarImoveis,
@@ -61,7 +61,7 @@ export default function Home({
               <h2 className="tituloDestaques">Imoveis em destaque</h2>
               <div className="gridImoveis">
                 {imoveisDestaque.map((imovel) => (
-                  <PropertyCard key={imovel.id} imovel={imovel} />
+                  <ImovelCard key={imovel.id} imovel={imovel} />
                 ))}
               </div>
             </div>

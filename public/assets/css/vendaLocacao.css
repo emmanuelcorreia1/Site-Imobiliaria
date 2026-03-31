@@ -42,7 +42,7 @@
 }
 
 
-.destaque {
+.destaque2 {
     padding: 30px 70px;
     visibility: inherit;
 }
@@ -56,7 +56,7 @@
 
 }
 
-.gridImoveis {
+.gridImoveis2 {
     color: var(--color-text-dark);
     display: grid;
     grid-template-columns: repeat(4, 340px);
@@ -105,14 +105,14 @@
     font-weight: 600;
 }
 
-.nomeCard {
+.nomeCard2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-left: 20px;
 }
 
-.nomeCard a {
+.nomeCard2 a {
     font-size: 21px;
     font-family: 'Poppins-bold';
     margin: 0;
@@ -120,13 +120,13 @@
     color: #000;
 }
 
-.nomeCard p {
+.nomeCard2 p {
     color: var(--color-descricao);
     font-weight: 600;
     margin-top: 10px;
 }
 
-.nomeCard span {
+.nomeCard2 span {
     color: var(--color-descricao);
     margin-right: 20px;
     font-family: var(--font-medium);
