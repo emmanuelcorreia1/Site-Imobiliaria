@@ -113,7 +113,7 @@
 }
 
 .nomeCard2 a {
-    font-size: 21px;
+    font-size: 20px;
     font-family: 'Poppins-bold';
     margin: 0;
     line-height: 30px;
@@ -134,7 +134,7 @@
     font-family: 18px;
 }
 
-.atributos {
+.atributos2 {
     display: flex;
     gap: 30px;
     font-size: 15px;

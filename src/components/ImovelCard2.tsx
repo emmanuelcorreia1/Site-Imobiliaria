@@ -35,7 +35,7 @@ export default function ImovelCard({ imovel }: ImovelCardProps) {
           </span>
         </div>
 
-        <div className="atributos">
+        <div className="atributos2">
           <span>
             <i className="fa-solid fa-bed" /> {imovel.quartos}
           </span>

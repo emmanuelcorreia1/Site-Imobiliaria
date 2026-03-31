@@ -1,5 +1,5 @@
 import Layout from "./Layout";
-import SearchForm from "./SearchForm";
+import FormBusca from "./FormBusca";
 import ImovelCard from "./ImovelCard2";
 import { empresa } from "../lib/empresa";
 import type { BuscaImoveis, ConsultaImoveis, OpcoesCatalogo } from "../lib/types";
@@ -33,7 +33,7 @@ export default function ListagemPage({
           <div className="cirBlur2" />
         </section>
 
-        <SearchForm
+        <FormBusca
           action={acao}
           busca={busca}
           catalogo={catalogo}
