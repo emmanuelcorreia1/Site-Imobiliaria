@@ -8,7 +8,12 @@ import {
   obterImoveisEmDestaque,
   obterOpcoesCatalogo,
 } from "../src/lib/imovelService";
-import type { BuscaImoveis, ConsultaImoveis, Imovel, OpcoesCatalogo } from "../src/lib/types";
+import type {
+  BuscaImoveis,
+  ConsultaImoveis,
+  Imovel,
+  OpcoesCatalogo,
+} from "../src/lib/types";
 
 export default function Home({
   busca,
@@ -28,24 +33,24 @@ export default function Home({
           <h1>
             Encontre o imovel ideal <br />
             <span className="linhaHero">
-            <span>com a{" "}</span>
-            <span
-              className="mondialle"
-              onMouseMove={(event) => {
-                const bounds = event.currentTarget.getBoundingClientRect();
-                const x = event.clientX - bounds.left;
-                const y = event.clientY - bounds.top;
+              <span>com a </span>
+              <span
+                className="mondialle"
+                onMouseMove={(event) => {
+                  const bounds = event.currentTarget.getBoundingClientRect();
+                  const x = event.clientX - bounds.left;
+                  const y = event.clientY - bounds.top;
 
-                event.currentTarget.style.setProperty("--mouse-x", `${x}px`);
-                event.currentTarget.style.setProperty("--mouse-y", `${y}px`);
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.setProperty("--mouse-x", "50%");
-                event.currentTarget.style.setProperty("--mouse-y", "50%");
-              }}
-            >
-              MONDIALLE
-            </span>
+                  event.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                  event.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.setProperty("--mouse-x", "50%");
+                  event.currentTarget.style.setProperty("--mouse-y", "50%");
+                }}
+              >
+                MONDIALLE
+              </span>
             </span>
           </h1>
         </div>
