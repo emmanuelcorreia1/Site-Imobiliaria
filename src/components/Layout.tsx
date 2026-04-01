@@ -9,6 +9,7 @@ interface LayoutProps {
   page: string;
   empresa: Empresa;
   children: ReactNode;
+  stylesheets?: string[];
 }
 
 export default function Layout({
@@ -16,6 +17,7 @@ export default function Layout({
   page,
   empresa,
   children,
+  stylesheets = [],
 }: LayoutProps) {
   return (
     <>
@@ -33,6 +35,9 @@ export default function Layout({
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         />
+        {stylesheets.map((href) => (
+          <link key={href} rel="stylesheet" href={href} />
+        ))}
       </Head>
 
       <Header pagina={page} />
