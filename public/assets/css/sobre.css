@@ -1,0 +1,73 @@
+.paginaSobre{
+    padding-top: 50px;
+}
+
+.heroSobre{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10%;
+    margin-left: 10%;   
+}
+
+.heroSobre img{
+    width: 600px;
+    height: 350px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 5;
+    top: 40px;
+}
+
+.divHeroSobre h1{
+    line-height: 70px;
+}
+
+.institucional{
+    margin-bottom: -50px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 80px;
+}
+
+.divHeroSobre h1{
+    font-family: 'Poppins-medium';
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+.mondialleSobre {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 70px;
+    font-family: var(--font-display);
+    font-weight: lighter;
+    color: white;
+}
+
+.textoIntro{
+    margin-right: 20px;
+    font-size: 20px;
+    color: var(--color-text-dark);
+    font-family: var(--font-medium);
+    position: relative;
+    z-index: 5;
+}
+
+.cirBlur3{
+    position: absolute;
+    width: 1100px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(227, 227, 227, 0.9);
+    filter: blur(90px);
+    right: -160px;
+    top: 320px;
+    z-index: 0;
+}
+
+.divPrincipal{
+    padding-top: 400px;
+    margin-top: 30px;
+}
