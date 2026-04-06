@@ -764,8 +764,7 @@ section.busca {
 }
 
 .redeSocial a:hover {
-    background: #fff;
-    color: #000;
+    color: var(--color-accent);
     transform: translateY(-3px);
 }
 
