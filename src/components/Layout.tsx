@@ -10,6 +10,8 @@ interface LayoutProps {
   empresa: Empresa;
   children: ReactNode;
   stylesheets?: string[];
+  showHeader?: boolean;
+  showFooter?: boolean;
 }
 
 export default function Layout({
@@ -18,6 +20,8 @@ export default function Layout({
   empresa,
   children,
   stylesheets = [],
+  showHeader = true,
+  showFooter = true,
 }: LayoutProps) {
   return (
     <>
@@ -40,9 +44,9 @@ export default function Layout({
         ))}
       </Head>
 
-      <Header pagina={page} />
+      {showHeader && <Header pagina={page} />}
       {children}
-      <Footer empresa={empresa} />
+      {showFooter && <Footer empresa={empresa} />}
     </>
   );
 }

@@ -1,7 +1,5 @@
 import Layout from "../src/components/Layout";
-import PageHero from "../src/components/PageHero";
 import { empresa } from "../src/lib/empresa";
-import { imoveis } from "../src/lib/imoveis";
 
 export default function SobrePage() {
   return (
