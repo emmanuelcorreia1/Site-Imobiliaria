@@ -33,8 +33,8 @@ export default function PaginaConstrucao() {
           />
           <h1>EM BREVE</h1>
           <p>
-            Estamos preparando uma experiencia exclusiva para apresentar
-            imoveis, solucoes e atendimento com excelencia.
+            Estamos preparando uma experiência exclusiva para apresentar
+            imóveis, soluções e atendimento com excelência.
           </p>
           <div className="iconesSociais">
             <a href={empresa.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
