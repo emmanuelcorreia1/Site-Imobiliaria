@@ -1,0 +1,217 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.tituloPagina h1{
+    font-family: 'Poppins-medium';
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    text-shadow: 0px 0px 10px #000000;
+}
+
+.tituloPagina p{
+    text-align: center;
+    margin-top: -100px;
+    font-size: 20px;
+    margin-bottom: 190px;
+}
+
+.divPrincipal2 {
+    background-color: var(--color-surface);
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: -100px;
+    z-index: 2;
+    padding-bottom: 60px;
+}
+
+.cirBlur2 {
+    position: absolute;
+    width: 1200px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(227, 227, 227, 0.9);
+    filter: blur(90px);
+    right: 140px;
+    top: 320px;
+
+    z-index: 0;
+}
+
+.contatoFormulario{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contatos{
+    margin-left: 12%;
+    margin-top: 50px;
+}
+
+.listaContato{
+    color: var(--color-text-dark);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.listEmail i,
+.listTel i,
+.listEndereco i,
+.listHorario i{
+    font-size: 25px;
+}
+
+.listEmail,
+.listTel,
+.listEndereco{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Poppins-medium';
+}
+
+.listTel{
+    margin-top: -25px;
+    margin-bottom: 10px;
+}
+
+.listHorario {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    font-family: 'Poppins-medium';
+}
+
+.listHorario i {
+    margin-top: 6px;
+}
+
+.listHorarioText h3 {   
+    margin-top: 5px;
+}
+
+.listEndereco h3{
+    margin-top: -11px;
+}
+
+
+.formContato{
+    margin-right: 12%;
+    color: var(--color-text-dark);
+    background-color: black;
+    padding: 30px 30px 30px 30px;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+
+.formContato form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formContato input[type="text"],
+.formContato input[type="tel"],
+.formContato input[type="email"]{
+    border-radius: 15px;
+    border: none;
+    width: 400px;
+    height: 50px;
+    margin-bottom: -5px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: 'Poppins-medium';
+}
+
+.formContato textarea {
+    border-radius: 15px;
+    border: none;
+    width: 400px;
+    height: 120px;
+    margin-bottom: 15px;
+    padding: 15px 0px 0px 19px;
+    font-family: 'Poppins-medium';
+    font-size: 15px;
+
+}
+
+.formContato textarea::placeholder{
+    color: rgba(0, 0, 0, 0.297);
+}
+
+.formContato input::placeholder{
+    font-family: 'Poppins-medium';
+    color: rgba(0, 0, 0, 0.297);
+}
+
+.formContato input[type="submit"]{
+    width: 250px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    margin: 0 auto;
+    font-family: 'Poppins-medium';
+    font-size: 18px;
+    font-weight: bold;
+    background-color: var(--color-accent);
+    margin-top: -20px;
+    transition: 0.3s;
+}
+
+.formContato input[type="submit"]:hover{
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.tituloMaps h1{
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: -80px;
+    font-family: 'Poppins-medium';
+    margin-top: 100px;
+}
+
+.divMaps{
+    width: 70%;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 90px;
+    box-shadow: rgba(0, 0, 0, 0.66) 1px 1px 10px -4px;
+}
+
+.botaoVoltarLocal {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+    border: none;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    padding: 10px 14px;
+    font-family: 'Poppins-medium';
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botaoVoltarLocal:hover {
+    background-color: var(--color-accent);
+    color: black;
+    scale: 1.02;
+}
