@@ -47,7 +47,7 @@ export default function Footer({ empresa }: FooterProps) {
         </div>
 
         <div className="footerIndices">
-          <h3>Navegacao</h3>
+          <h3>Navegação</h3>
           <ul>
             <li>
               <Link href="/">Inicio</Link>
@@ -56,7 +56,7 @@ export default function Footer({ empresa }: FooterProps) {
               <Link href="/venda">Venda</Link>
             </li>
             <li>
-              <Link href="/locacao">Locacao</Link>
+              <Link href="/locacao">Locação</Link>
             </li>
             <li>
               <Link href="/sobre">Sobre a Mondialle</Link>
@@ -70,15 +70,15 @@ export default function Footer({ empresa }: FooterProps) {
         <div className="footerIndices">
           <h3>Contato</h3>
           <ul className="footerContato">
-            <li>Email - {empresa.email}</li>
-            <li>Telefone - {empresa.telefone}</li>
-            <li>Localizacao - {empresa.endereco}</li>
+            <li><i className="fas fa-envelope"></i> {empresa.email}</li>
+            <li><i className="fas fa-phone"></i>  {empresa.telefone}</li>
+            <li><i className="fas fa-map-marker-alt"></i> {empresa.endereco}</li>
           </ul>
         </div>
       </div>
 
       <div className="creditosFooter">
-        Design e Desenvolvimento do site por{" "}
+        Design e Desenvolvimento por{" "}
         <span>Emmanuel Scharnoski Correia</span>
       </div>
 

@@ -33,8 +33,8 @@ export default function PaginaConstrucao() {
           />
           <h1>EM BREVE</h1>
           <p>
-            Estamos preparando uma experiência exclusiva para apresentar
-            imóveis, soluções e atendimento com excelência.
+            Estamos preparando uma experiencia exclusiva para apresentar
+            imoveis, solucoes e atendimento com excelencia.
           </p>
           <div className="iconesSociais">
             <a href={empresa.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -45,7 +45,7 @@ export default function PaginaConstrucao() {
               <i className="fa-brands fa-facebook" />
             </a>
 
-            <a href="" arial-label="Whatsapp" target="_blank" rel="noonpener noreferrer">
+            <a href="" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer">
                 <i className="fa-brands fa-whatsapp" />
             </a>
           </div>

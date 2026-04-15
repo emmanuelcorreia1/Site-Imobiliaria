@@ -809,6 +809,13 @@ section.busca {
 
 .footerContato li {
     max-width: 420px;
+    display: flex;
+    align-items: center; 
+    gap: 20px;
+}
+
+.fa-map-marker-alt{
+    margin-top: -30px;
 }
 
 .creditosFooter {
