@@ -175,6 +175,22 @@ html {
     cursor: pointer;
 }
 
+.mensagemFormulario {
+    width: 400px;
+    margin: 15px 0 0;
+    font-family: 'Poppins-medium';
+    font-size: 14px;
+    text-align: center;
+}
+
+.mensagemFormulario.sucesso {
+    color: #2ecc71;
+}
+
+.mensagemFormulario.erro {
+    color: #ff5c5c;
+}
+
 .tituloMaps h1{
     color: var(--color-text-dark);
     text-align: center;
