@@ -1,8 +1,44 @@
 import Layout from "../src/components/Layout";
 import { empresa } from "../src/lib/empresa";
 import Maps from "../src/components/Maps";
+import { useState } from "react";
+import type { FormEvent } from "react";
 
 export default function ContatoPage() {
+  const [status, setStatus] = useState("");
+  const [tipoStatus, setTipoStatus] = useState<"sucesso" | "erro">("sucesso");
+
+  async function enviarFormulario(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const dados = new FormData(form);
+
+    const resposta = await fetch("/api/enviarEmail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: dados.get("nome"),
+        email: dados.get("email"),
+        telefone: dados.get("telefone"),
+        assunto: dados.get("assunto"),
+        mensagem: dados.get("mensagem"),
+      }),
+    });
+    const resultado = await resposta.json();
+
+    if (resposta.ok) {
+      setTipoStatus("sucesso");
+      setStatus(resultado.mensagem || "Mensagem enviada com sucesso.");
+      form.reset();
+    } else {
+      setTipoStatus("erro");
+      setStatus(resultado.mensagem || "Não foi possivel enviar a mensagem. Tente novamente.");
+    }
+  }
+
   return (
     <Layout
       title="Contato"
@@ -49,12 +85,13 @@ export default function ContatoPage() {
             </section>
 
             <section className="formContato">
-              <form action="formulario">
+              <form onSubmit={enviarFormulario}>
                 <input
                   type="text"
                   id="campoNome"
                   name="nome"
                   placeholder="Nome"
+                  required
                 />{" "}
                 <br />
                 <input
@@ -62,7 +99,8 @@ export default function ContatoPage() {
                   name="email"
                   id="campoEmail"
                   placeholder="Email"
-                />
+                  required
+                />{" "}
                 <br />
                 <input
                   type="tel"
@@ -82,9 +120,11 @@ export default function ContatoPage() {
                   name="mensagem"
                   id="campoMensagem"
                   placeholder="Mensagem"
-                />
+                  required
+                />{" "}
                 <br />
                 <input type="submit" value="Enviar" />
+                {status && <p className={`mensagemFormulario ${tipoStatus}`}>{status}</p>}
               </form>
             </section>
           </div>
