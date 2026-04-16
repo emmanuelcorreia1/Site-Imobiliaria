@@ -19,6 +19,10 @@ export default function AnunciarPage() {
             que desejam anunciar com mais segurança e transparência
           </p>
         </section>
+
+        <div className="formAnuncio">
+          <h2></h2>
+        </div>
       </main>
     </Layout>
   );
