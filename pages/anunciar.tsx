@@ -27,9 +27,9 @@ function DropdownFinalidade() {
     selecionadas.length === 0
       ? ""
       : finalidades
-          .filter((finalidade) => selecionadas.includes(finalidade.value))
-          .map((finalidade) => finalidade.label)
-          .join(", ");
+        .filter((finalidade) => selecionadas.includes(finalidade.value))
+        .map((finalidade) => finalidade.label)
+        .join(", ");
 
   function alternarFinalidade(value: string) {
     setSelecionadas((valoresAtuais) => {
@@ -102,6 +102,11 @@ export default function AnunciarPage() {
             proprietários que desejam anunciar com mais segurança e
             transparência
           </p>
+          <div className="heroImages">
+            <img src="/assets/images/Terra.png" alt="Planeta Terra" className="terra" />
+            <div className="cirBlur" />
+            <div className="cirBlur2" />
+          </div>
         </section>
 
         <div className="formAnuncio">
@@ -111,19 +116,19 @@ export default function AnunciarPage() {
           </h2>
           <form action="">
             <label htmlFor="campoNome">Nome completo*</label> <br />
-            <input type="text" id="campoNome" name="nome" required/>{" "}
+            <input type="text" id="campoNome" name="nome" required />{" "}
             <br />
             <label htmlFor="campoTelefone">Telefone*</label> <br />
-            <input type="tel" name="telefone" id="campoTelefone" placeholder="(00) 0000-0000" required/>{" "}
+            <input type="tel" name="telefone" id="campoTelefone" placeholder="(00) 0000-0000" required />{" "}
             <br />
             <label htmlFor="campoEmail">Email*</label> <br />
-            <input type="email" name="email" id="campoEmail" placeholder="seuemail@gmail.com" required/>{" "}
+            <input type="email" name="email" id="campoEmail" placeholder="seuemail@gmail.com" required />{" "}
             <br />
             <label htmlFor="campoTipo">Tipo do imóvel*</label> <br />
-            <input type="text" name="tipoImovel" id="campoTipo" placeholder="Apartamento" required/>
+            <input type="text" name="tipoImovel" id="campoTipo" placeholder="Apartamento" required />
             <br />
             <label>Finalidade de Imóvel*</label> <br />
-            <DropdownFinalidade/>
+            <DropdownFinalidade />
             <br />
             <label htmlFor="campoCidade">Cidade*</label> <br />
             <input type="text" name="cidade" id="campoCidade" required />
@@ -132,8 +137,9 @@ export default function AnunciarPage() {
             <input type="text" name="bairro" id="campoBairro" required />
             <br />
             <label htmlFor="campoMensagem">Mensagem</label> <br />
-            <textarea name="mensagem" id="campoMensagem" /> 
+            <textarea name="mensagem" id="campoMensagem" />
             <br />
+            <input type="submit" value="Enviar" />
           </form>
         </div>
       </main>
