@@ -16,9 +16,14 @@ export const imoveis: Imovel[] = [
     area: 186,
     preco: 780000,
     imagem: "/assets/images/casa01.jpg",
+    imagens: ["/assets/images/casa01.jpg",
+      "/assets/images/casa01.jpg",
+      "/assets/images/casa01.jpg",
+    ],
     descricao:
       "Casa ampla para familias que buscam localizacao central, ambientes integrados e espaco para receber visitas.",
     destaque: true,
+    comodidades: ["churraqueira"]
   },
   {
     id: 2,
