@@ -1,74 +1,299 @@
+import { useState, useRef } from "react";
 import type { GetServerSideProps } from "next";
-import Link from "next/link";
 import Layout from "../../src/components/Layout";
+import ImovelCard from "../../src/components/ImovelCard";
 import { empresa } from "../../src/lib/empresa";
 import {
   obterImovelPorCodigo,
   obterImovelPorId,
+  obterImoveisEmDestaque,
 } from "../../src/lib/imovelService";
 import { formatarPreco } from "../../src/lib/formatar";
 import type { Imovel } from "../../src/lib/types";
 
 interface DetalheImovelPageProps {
   imovel: Imovel;
+  imoveisRelacionados: Imovel[];
 }
 
 export default function DetalheImovelPage({
   imovel,
+  imoveisRelacionados,
 }: DetalheImovelPageProps) {
+  const [form, setForm] = useState({
+    nome: "",
+    telefone: "",
+    email: "",
+    mensagem: `Olá! Estou interessado no imóvel código ${imovel.codigo}, poderia me passar mais informações?`,
+  });
+  const [enviando, setEnviando] = useState(false);
+  const [enviado, setEnviado] = useState(false);
+  const [erro, setErro] = useState("");
+
+  const galeriaRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+
+  function onGaleriaMouseDown(e: React.MouseEvent) {
+    if (!galeriaRef.current) return;
+    isDragging.current = true;
+    dragStartX.current = e.pageX - galeriaRef.current.offsetLeft;
+    dragScrollLeft.current = galeriaRef.current.scrollLeft;
+    galeriaRef.current.style.cursor = "grabbing";
+    galeriaRef.current.style.scrollBehavior = "auto";
+  }
+
+  function onGaleriaMouseMove(e: React.MouseEvent) {
+    if (!isDragging.current || !galeriaRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - galeriaRef.current.offsetLeft;
+    galeriaRef.current.scrollLeft = dragScrollLeft.current - (x - dragStartX.current) * 1.5;
+  }
+
+  function onGaleriaMouseUp() {
+    if (!galeriaRef.current) return;
+    isDragging.current = false;
+    galeriaRef.current.style.cursor = "grab";
+    galeriaRef.current.style.scrollBehavior = "smooth";
+  }
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setEnviando(true);
+    setErro("");
+    try {
+      const res = await fetch("/api/enviarEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          assunto: `Interesse no imóvel ${imovel.codigo} — ${imovel.titulo}`,
+        }),
+      });
+      if (res.ok) {
+        setEnviado(true);
+      } else {
+        setErro("Não foi possível enviar. Tente novamente.");
+      }
+    } catch {
+      setErro("Erro ao enviar. Verifique sua conexão.");
+    } finally {
+      setEnviando(false);
+    }
+  }
+
+  function compartilhar() {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      navigator.share({ title: imovel.titulo, url: window.location.href });
+    } else if (typeof navigator !== "undefined") {
+      navigator.clipboard?.writeText(window.location.href);
+    }
+  }
+
+  const finalidadeLabel = imovel.finalidade === "venda" ? "Venda" : "Locação";
+
   return (
     <Layout
       title={`${imovel.titulo} | ${empresa.nome}`}
       page="imovel"
       empresa={empresa}
+      stylesheets={["/assets/css/detalheImovel.css"]}
     >
-      <main className="internalPage">
-        <section className="detailHero">
-          <div className="detailImageWrap">
-            <img
-              src={imovel.imagem}
-              alt={imovel.titulo}
-              className="detailImage"
-            />
+      <main className="paginaImovel">
+        <section className="tituloPagina">
+          <h1>Detalhe do imóvel</h1>
+        </section>
+        <div className="cirBlur2"/>
+        <section className="diSection">
+          
+          <div className="diTopo">
+            <div>
+              <h2 className="diTitulo">{imovel.titulo}</h2>
+              <p className="diLocalizacao">
+                {imovel.bairro} - {imovel.cidade}
+              </p>
+            </div>
+            <button className="diCompartilhar" onClick={compartilhar}>
+              <i className="fa-solid fa-arrow-up-from-bracket" /> Compartilhar
+            </button>
           </div>
 
-          <div className="detailContent">
-            <span className="sectionEyebrow">Codigo {imovel.codigo}</span>
-            <h1>{imovel.titulo}</h1>
-            <p className="detailLocation">
-              {imovel.cidade} - {imovel.bairro}
-            </p>
-            <p className="detailDescription">{imovel.descricao}</p>
+          {/* Galeria */}
+          {(() => {
+            const imagens = imovel.imagens?.length ? imovel.imagens : [imovel.imagem];
+            return (
+              <div className="diGaleria">
+                <div
+                  className="diGalScroll"
+                  ref={galeriaRef}
+                  onMouseDown={onGaleriaMouseDown}
+                  onMouseMove={onGaleriaMouseMove}
+                  onMouseUp={onGaleriaMouseUp}
+                  onMouseLeave={onGaleriaMouseUp}
+                >
+                  {imagens.map((src, i) => (
+                    <div key={i} className="diGalItem">
+                      <img src={src} alt={`${imovel.titulo} — foto ${i + 1}`} draggable={false} />
+                    </div>
+                  ))}
+                </div>
+                {imagens.length > 1 && (
+                  <div className="diGalDots">
+                    {imagens.map((_, i) => (
+                      <button
+                        key={i}
+                        className="diGalDot"
+                        aria-label={`Foto ${i + 1}`}
+                        onClick={() => {
+                          if (!galeriaRef.current) return;
+                          const item = galeriaRef.current.children[i] as HTMLElement;
+                          galeriaRef.current.scrollTo({ left: item.offsetLeft, behavior: "smooth" });
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
-            <div className="detailSpecs">
-              <span>
-                <strong>{imovel.categoria}</strong>
-              </span>
-              <span>
-                <strong>{imovel.quartos}</strong> quartos
-              </span>
-              <span>
-                <strong>{imovel.banheiros}</strong> banheiros
-              </span>
-              <span>
-                <strong>{imovel.vagas}</strong> vagas
-              </span>
-              <span>
-                <strong>{imovel.area}</strong> m2
-              </span>
-            </div>
-
-            <div className="detailActions">
-              <strong className="detailPrice">
+          {/* Layout: info + formulário */}
+          <div className="diLayout">
+            {/* Coluna esquerda */}
+            <div className="diInfo">
+              <span className="diFinalidade">{finalidadeLabel}</span>
+              <strong className="diPreco">
                 R$ {formatarPreco(imovel.preco)}
-                {imovel.finalidade === "locacao" ? "/mes" : ""}
+                {imovel.finalidade === "locacao" ? "/mês" : ""}
               </strong>
-              <Link className="btnBuscar detailButton" href="/contato">
-                Solicitar atendimento
-              </Link>
+
+              {/* Especificações */}
+              <div className="diSpecs">
+                <div className="diSpecItem">
+                  <i className="fa-solid fa-ruler-combined diSpecIcon" />
+                  <span className="diSpecLabel">Área</span>
+                  <strong className="diSpecValor">{imovel.area} m²</strong>
+                </div>
+                {imovel.quartos > 0 && (
+                  <div className="diSpecItem">
+                    <i className="fa-solid fa-bed diSpecIcon" />
+                    <span className="diSpecLabel">Quartos</span>
+                    <strong className="diSpecValor">{imovel.quartos}</strong>
+                  </div>
+                )}
+                {imovel.banheiros > 0 && (
+                  <div className="diSpecItem">
+                    <i className="fa-solid fa-bath diSpecIcon" />
+                    <span className="diSpecLabel">Banheiros</span>
+                    <strong className="diSpecValor">{imovel.banheiros}</strong>
+                  </div>
+                )}
+                {imovel.vagas > 0 && (
+                  <div className="diSpecItem">
+                    <i className="fa-solid fa-car diSpecIcon" />
+                    <span className="diSpecLabel">Garagem</span>
+                    <strong className="diSpecValor">
+                      {imovel.vagas} vagas
+                    </strong>
+                  </div>
+                )}
+              </div>
+
+              {/* Comodidades */}
+              {imovel.comodidades && imovel.comodidades.length > 0 && (
+                <div className="diTags">
+                  {imovel.comodidades.map((c) => (
+                    <span key={c} className="diTag">
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Descrição */}
+              <div className="diDescricao">
+                <h3>Descrição</h3>
+                {imovel.descricao.split("\n").map((paragrafo, i) => (
+                  <p key={i}>{paragrafo}</p>
+                ))}
+              </div>
             </div>
+
+            {/* Formulário lateral */}
+            <aside className="diFormCard">
+              <h3>Gostou desse imóvel?</h3>
+              {enviado ? (
+                <p className="diFormSucesso">
+                  Mensagem enviada! Em breve entraremos em contato.
+                </p>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="diFormInput"
+                    type="text"
+                    name="nome"
+                    placeholder="Nome"
+                    value={form.nome}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    className="diFormInput"
+                    type="tel"
+                    name="telefone"
+                    placeholder="Telefone"
+                    value={form.telefone}
+                    onChange={handleChange}
+                    required
+                  />
+                  <input
+                    className="diFormInput"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                  />
+                  <textarea
+                    className="diFormTextarea"
+                    name="mensagem"
+                    value={form.mensagem}
+                    onChange={handleChange}
+                    rows={4}
+                  />
+                  {erro && <p className="diFormErro">{erro}</p>}
+                  <button
+                    type="submit"
+                    className="diBtnEnviar"
+                    disabled={enviando}
+                  >
+                    {enviando ? "Enviando..." : "Enviar mensagem"}
+                  </button>
+                </form>
+              )}
+            </aside>
           </div>
         </section>
+
+        {/* Imóveis relacionados */}
+        {imoveisRelacionados.length > 0 && (
+          <section className="diRelacionados">
+            <h2>Já viu esses imóveis?</h2>
+            <div className="gridImoveis">
+              {imoveisRelacionados.map((rel) => (
+                <ImovelCard key={rel.id} imovel={rel} />
+              ))}
+            </div>
+          </section>
+        )}
       </main>
     </Layout>
   );
@@ -78,18 +303,20 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const identificador = params?.identificador;
   const valor =
     typeof identificador === "string" ? identificador : String(identificador);
-  const imovel =
-    obterImovelPorCodigo(valor) || obterImovelPorId(valor);
+  const imovel = obterImovelPorCodigo(valor) || obterImovelPorId(valor);
 
   if (!imovel) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
+
+  const imoveisRelacionados = obterImoveisEmDestaque(4)
+    .filter((i) => i.id !== imovel.id)
+    .slice(0, 3);
 
   return {
     props: {
       imovel,
+      imoveisRelacionados,
     },
   };
 };
