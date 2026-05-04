@@ -17,6 +17,7 @@
     position: relative;
     z-index: 2;
     margin-top: -50px;
+    margin-bottom: 100px;
 }
 
 .cirBlur2 {
@@ -81,13 +82,13 @@
     position: relative;
     border-radius: 18px;
     overflow: hidden;
-    height: 430px;
+    height: 650px;
     margin-bottom: 44px;
 }
 
 .diGalScroll {
     display: flex;
-    gap: 10px;
+    gap: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
@@ -96,7 +97,7 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding-right: 10px;
+    touch-action: pan-y pan-x;
 }
 
 .diGalScroll::-webkit-scrollbar {
@@ -105,14 +106,13 @@
 
 .diGalItem {
     flex-shrink: 0;
-    width: calc(80% - 5px);
+    width: 100%;
     scroll-snap-align: start;
-    border-radius: 14px;
     overflow: hidden;
 }
 
 .diGalItem:last-child {
-    width: 80%;
+    width: 100%;
 }
 
 .diGalItem img {
@@ -122,6 +122,38 @@
     display: block;
     user-select: none;
     -webkit-user-drag: none;
+}
+
+.diGalNav {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.86);
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.diGalNav:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.diGalNavPrev {
+    left: 18px;
+}
+
+.diGalNavNext {
+    right: 18px;
 }
 
 .diGalDots {
@@ -150,6 +182,11 @@
     transform: scale(1.2);
 }
 
+.diGalDot.ativo {
+    background: #fff;
+    transform: scale(1.35);
+}
+
 /* Main two-column layout */
 .diLayout {
     display: grid;
@@ -161,7 +198,7 @@
 /* --- Left info column --- */
 .diFinalidade {
     display: block;
-    font-size: 14px;
+    font-size: 20px;
     color: #888;
     margin-bottom: 2px;
     font-family: var(--font-medium);
@@ -170,7 +207,7 @@
 .diPreco {
     display: block;
     font-family: 'Poppins-bold', sans-serif;
-    font-size: 32px;
+    font-size: 40px;
     color: #000;
     margin-bottom: 32px;
 }
@@ -351,6 +388,7 @@
 
 .diRelacionados .gridImoveis {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 50px;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -406,11 +444,24 @@
     }
 
     .diGalItem {
-        width: calc(90% - 5px);
+        width: 100%;
     }
 
     .diGalItem:last-child {
-        width: 90%;
+        width: 100%;
+    }
+
+    .diGalNav {
+        width: 38px;
+        height: 38px;
+    }
+
+    .diGalNavPrev {
+        left: 10px;
+    }
+
+    .diGalNavNext {
+        right: 10px;
     }
 
     .diRelacionados h2 {
