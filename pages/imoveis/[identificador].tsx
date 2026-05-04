@@ -7,7 +7,7 @@ import {
   obterImovelPorCodigo,
   obterImovelPorId,
   obterImoveisEmDestaque,
-} from "../../src/lib/imovelService";
+} from "../../src/lib/imovelRepository";
 import { formatarPreco } from "../../src/lib/formatar";
 import type { Imovel } from "../../src/lib/types";
 
@@ -29,11 +29,44 @@ export default function DetalheImovelPage({
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [erro, setErro] = useState("");
+  const [fotoAtual, setFotoAtual] = useState(0);
 
   const galeriaRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const dragScrollLeft = useRef(0);
+
+  function irParaFoto(indice: number) {
+    if (!galeriaRef.current) return;
+
+    const fotos = Array.from(galeriaRef.current.children) as HTMLElement[];
+    const proximoIndice = Math.max(0, Math.min(indice, fotos.length - 1));
+    const foto = fotos[proximoIndice];
+
+    galeriaRef.current.scrollTo({
+      left: foto.offsetLeft,
+      behavior: "smooth",
+    });
+    setFotoAtual(proximoIndice);
+  }
+
+  function onGaleriaScroll(e: React.UIEvent<HTMLDivElement>) {
+    const galeria = e.currentTarget;
+    const fotos = Array.from(galeria.children) as HTMLElement[];
+
+    if (!fotos.length) return;
+
+    const indiceMaisProximo = fotos.reduce((melhorIndice, foto, indice) => {
+      const distanciaAtual = Math.abs(foto.offsetLeft - galeria.scrollLeft);
+      const melhorDistancia = Math.abs(
+        fotos[melhorIndice].offsetLeft - galeria.scrollLeft,
+      );
+
+      return distanciaAtual < melhorDistancia ? indice : melhorIndice;
+    }, 0);
+
+    setFotoAtual(indiceMaisProximo);
+  }
 
   function onGaleriaMouseDown(e: React.MouseEvent) {
     if (!galeriaRef.current) return;
@@ -137,6 +170,7 @@ export default function DetalheImovelPage({
                   onMouseMove={onGaleriaMouseMove}
                   onMouseUp={onGaleriaMouseUp}
                   onMouseLeave={onGaleriaMouseUp}
+                  onScroll={onGaleriaScroll}
                 >
                   {imagens.map((src, i) => (
                     <div key={i} className="diGalItem">
@@ -145,20 +179,34 @@ export default function DetalheImovelPage({
                   ))}
                 </div>
                 {imagens.length > 1 && (
-                  <div className="diGalDots">
-                    {imagens.map((_, i) => (
-                      <button
-                        key={i}
-                        className="diGalDot"
-                        aria-label={`Foto ${i + 1}`}
-                        onClick={() => {
-                          if (!galeriaRef.current) return;
-                          const item = galeriaRef.current.children[i] as HTMLElement;
-                          galeriaRef.current.scrollTo({ left: item.offsetLeft, behavior: "smooth" });
-                        }}
-                      />
-                    ))}
-                  </div>
+                  <>
+                    <button
+                      type="button"
+                      className="diGalNav diGalNavPrev"
+                      aria-label="Foto anterior"
+                      onClick={() => irParaFoto(fotoAtual - 1)}
+                    >
+                      <i className="fa-solid fa-chevron-left" />
+                    </button>
+                    <button
+                      type="button"
+                      className="diGalNav diGalNavNext"
+                      aria-label="Próxima foto"
+                      onClick={() => irParaFoto(fotoAtual + 1)}
+                    >
+                      <i className="fa-solid fa-chevron-right" />
+                    </button>
+                    <div className="diGalDots">
+                      {imagens.map((_, i) => (
+                        <button
+                          key={i}
+                          className={`diGalDot${i === fotoAtual ? " ativo" : ""}`}
+                          aria-label={`Foto ${i + 1}`}
+                          onClick={() => irParaFoto(i)}
+                        />
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
             );
@@ -303,13 +351,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const identificador = params?.identificador;
   const valor =
     typeof identificador === "string" ? identificador : String(identificador);
-  const imovel = obterImovelPorCodigo(valor) || obterImovelPorId(valor);
+  const imovel =
+    (await obterImovelPorCodigo(valor)) ?? (await obterImovelPorId(valor));
 
   if (!imovel) {
     return { notFound: true };
   }
 
-  const imoveisRelacionados = obterImoveisEmDestaque(4)
+  const destaque = await obterImoveisEmDestaque(4);
+  const imoveisRelacionados = destaque
     .filter((i) => i.id !== imovel.id)
     .slice(0, 3);
 
