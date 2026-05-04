@@ -7,7 +7,7 @@ import {
   filtrarImoveis,
   obterImoveisEmDestaque,
   obterOpcoesCatalogo,
-} from "../src/lib/imovelService";
+} from "../src/lib/imovelRepository";
 import type {
   BuscaImoveis,
   ConsultaImoveis,
@@ -97,11 +97,17 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+  const [busca, catalogo, imoveisDestaque] = await Promise.all([
+    filtrarImoveis(query),
+    obterOpcoesCatalogo(),
+    obterImoveisEmDestaque(6),
+  ]);
+
   return {
     props: {
-      busca: filtrarImoveis(query),
-      catalogo: obterOpcoesCatalogo(),
-      imoveisDestaque: obterImoveisEmDestaque(6),
+      busca,
+      catalogo,
+      imoveisDestaque,
       consulta: query,
     },
   };

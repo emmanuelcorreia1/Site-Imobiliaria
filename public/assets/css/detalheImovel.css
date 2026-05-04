@@ -1,0 +1,474 @@
+.tituloPagina {
+    text-align: center;
+    padding: 50px 20px 110px;
+}
+
+.tituloPagina h1 {
+    font-family: var(--font-medium);
+    font-size: 50px;
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.diSection {
+    background: #fff;
+    padding: 60px 10% 70px;
+    position: relative;
+    z-index: 2;
+    margin-top: -50px;
+    margin-bottom: 100px;
+}
+
+.cirBlur2 {
+    position: absolute;
+    width: 1200px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(227, 227, 227, 0.9);
+    filter: blur(90px);
+    right: 150px;
+    top: 280px;
+    z-index: 0;
+}
+
+/* Top: title + share */
+.diTopo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.diTitulo {
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 35px;
+    color: #000;
+    margin: 0 0 8px;
+    line-height: 1.2;
+}
+
+.diLocalizacao {
+    color: #888;
+    font-size: 20px;
+    margin: 0;
+}
+
+.diCompartilhar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+    color: #333;
+    font-family: var(--font-medium);
+    font-size: 15px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: 0.2s;
+}
+
+.diCompartilhar:hover {
+    border-color: #999;
+    color: #000;
+}
+
+/* Gallery */
+.diGaleria {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    height: 650px;
+    margin-bottom: 44px;
+}
+
+.diGalScroll {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    height: 100%;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-y pan-x;
+}
+
+.diGalScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.diGalItem {
+    flex-shrink: 0;
+    width: 100%;
+    scroll-snap-align: start;
+    overflow: hidden;
+}
+
+.diGalItem:last-child {
+    width: 100%;
+}
+
+.diGalItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.diGalNav {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.86);
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.diGalNav:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.diGalNavPrev {
+    left: 18px;
+}
+
+.diGalNavNext {
+    right: 18px;
+}
+
+.diGalDots {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.diGalDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.diGalDot:hover {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+.diGalDot.ativo {
+    background: #fff;
+    transform: scale(1.35);
+}
+
+/* Main two-column layout */
+.diLayout {
+    display: grid;
+    grid-template-columns: 1fr 370px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- Left info column --- */
+.diFinalidade {
+    display: block;
+    font-size: 20px;
+    color: #888;
+    margin-bottom: 2px;
+    font-family: var(--font-medium);
+}
+
+.diPreco {
+    display: block;
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 40px;
+    color: #000;
+    margin-bottom: 32px;
+}
+
+/* Specs row */
+.diSpecs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.diSpecItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f7f7f7;
+    border-radius: 14px;
+    padding: 14px 20px;
+    gap: 2px;
+    text-align: center;
+    min-width: 88px;
+}
+
+.diSpecIcon {
+    font-size: 22px;
+    color: var(--color-accent);
+    margin-bottom: 6px;
+}
+
+.diSpecLabel {
+    font-size: 12px;
+    color: #888;
+    font-family: var(--font-medium);
+}
+
+.diSpecValor {
+    font-size: 15px;
+    font-family: 'Poppins-bold', sans-serif;
+    color: #000;
+}
+
+/* Amenity tags */
+.diTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+
+.diTag {
+    background: var(--color-accent);
+    color: #000;
+    padding: 7px 18px;
+    border-radius: 999px;
+    font-family: var(--font-medium);
+    font-size: 14px;
+}
+
+/* Description */
+.diDescricao {
+    margin-top: 4px;
+}
+
+.diDescricao h3 {
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 24px;
+    color: #000;
+    margin: 0 0 14px;
+}
+
+.diDescricao p {
+    color: #444;
+    line-height: 1.85;
+    font-size: 16px;
+    margin: 0 0 14px;
+}
+
+/* --- Right: form card --- */
+.diFormCard {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.09);
+    position: sticky;
+    top: 24px;
+}
+
+.diFormCard h3 {
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 18px;
+    color: #000;
+    margin: 0 0 18px;
+    text-align: center;
+}
+
+.diFormInput,
+.diFormTextarea {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: var(--font-light);
+    font-size: 15px;
+    margin-bottom: 10px;
+    outline: none;
+    color: #000;
+    background: #fff;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    display: block;
+}
+
+.diFormInput:focus,
+.diFormTextarea:focus {
+    border-color: #999;
+}
+
+.diFormTextarea {
+    resize: none;
+    line-height: 1.6;
+}
+
+.diFormSucesso {
+    text-align: center;
+    color: #2e7d32;
+    font-family: var(--font-medium);
+    padding: 24px 0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.diFormErro {
+    color: #c62828;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.diBtnEnviar {
+    width: 100%;
+    padding: 16px;
+    background: var(--color-accent);
+    color: #000;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-medium);
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 4px;
+}
+
+.diBtnEnviar:hover:not(:disabled) {
+    background: #000;
+    color: #fff;
+}
+
+.diBtnEnviar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Related properties */
+.diRelacionados {
+    background: #fff;
+    padding: 60px 10% 80px;
+    border-top: 1px solid #eeeeee;
+}
+
+.diRelacionados h2 {
+    text-align: center;
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 32px;
+    color: #000;
+    margin: 0 0 44px;
+}
+
+.diRelacionados .gridImoveis {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 50px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 1100px) {
+    .diSection {
+        padding: 50px 5% 60px;
+    }
+
+    .diLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .diFormCard {
+        position: static;
+    }
+
+    .diRelacionados {
+        padding: 50px 5% 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .diHero {
+        padding: 60px 20px 80px;
+    }
+
+    .diHero h1 {
+        font-size: 30px;
+    }
+
+    .diSection {
+        padding: 36px 5% 50px;
+        border-radius: 24px 24px 0 0;
+        margin-top: -30px;
+    }
+
+    .diTopo {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .diTitulo {
+        font-size: 24px;
+    }
+
+    .diPreco {
+        font-size: 26px;
+    }
+
+    .diGaleria {
+        height: 260px;
+    }
+
+    .diGalItem {
+        width: 100%;
+    }
+
+    .diGalItem:last-child {
+        width: 100%;
+    }
+
+    .diGalNav {
+        width: 38px;
+        height: 38px;
+    }
+
+    .diGalNavPrev {
+        left: 10px;
+    }
+
+    .diGalNavNext {
+        right: 10px;
+    }
+
+    .diRelacionados h2 {
+        font-size: 24px;
+    }
+
+    .diRelacionados .gridImoveis {
+        grid-template-columns: 1fr;
+    }
+}

@@ -22,8 +22,10 @@ export interface Imovel {
   area: number;
   preco: number;
   imagem: string;
+  imagens?: string[];
   descricao: string;
   destaque: boolean;
+  comodidades?: string[];
 }
 
 export interface FiltrosImoveis {
