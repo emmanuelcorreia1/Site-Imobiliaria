@@ -8,9 +8,9 @@ const usaBancoLocal =
 const pool = new Pool({
   connectionString,
   ssl: usaBancoLocal ? false : { rejectUnauthorized: false },
-  max: 10,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
+  max: 2,
+  idleTimeoutMillis: 0,
+  connectionTimeoutMillis: 10000,
 });
 
 export default pool;
