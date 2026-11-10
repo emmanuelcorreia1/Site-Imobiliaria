@@ -1,0 +1,115 @@
+/* "Não achou o imóvel que procura?" */
+
+.naoAchou {
+    padding: 60px 5% 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.naoAchouCaixa {
+    width: 100%;
+    max-width: 860px;
+    padding: 36px 40px 40px;
+    border-radius: 20px;
+    background-color: #fbf6ea;
+    border: 1px solid #f0e2bf;
+    border-left: 6px solid var(--color-accent, #f5a300);
+}
+
+.naoAchouCaixa h2 {
+    margin: 0 0 8px;
+    font-family: 'Poppins-bold', sans-serif;
+    font-size: 28px;
+    color: #000;
+}
+
+.naoAchouSub {
+    margin: 0 0 24px;
+    font-family: var(--font-medium, inherit);
+    font-size: 17px;
+    color: #555;
+}
+
+.naoAchouForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.naoAchouForm label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-medium, inherit);
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.naoAchouForm input,
+.naoAchouForm select,
+.naoAchouForm textarea {
+    padding: 12px 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    color: #111;
+}
+
+.naoAchouForm textarea {
+    resize: vertical;
+}
+
+.naoAchouLinhaInteira {
+    grid-column: 1 / -1;
+}
+
+.naoAchouBotao {
+    padding: 14px 40px;
+    border: none;
+    border-radius: 999px;
+    background-color: var(--color-accent, #f5a300);
+    color: #000;
+    font-family: var(--font-medium, inherit);
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.433) 0px 0px 4px 1px;
+}
+
+.naoAchouBotao:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.naoAchouErro {
+    margin: 0;
+    color: #b3261e;
+    font-weight: 600;
+}
+
+.naoAchouSucesso {
+    margin: 0;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background-color: #e6f4ea;
+    color: #1e6b34;
+    font-family: var(--font-medium, inherit);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .naoAchouCaixa {
+        padding: 26px 20px 30px;
+    }
+
+    .naoAchouCaixa h2 {
+        font-size: 23px;
+    }
+
+    .naoAchouForm {
+        grid-template-columns: 1fr;
+    }
+}
