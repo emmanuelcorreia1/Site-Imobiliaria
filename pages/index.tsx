@@ -2,6 +2,7 @@ import type { GetServerSideProps } from "next";
 import Layout from "../src/components/Layout";
 import FormBusca from "../src/components/FormBusca";
 import ImovelCard from "../src/components/ImovelCard";
+import NaoAchouImovel from "../src/components/NaoAchouImovel";
 import { empresa } from "../src/lib/empresa";
 import {
   filtrarImoveis,
@@ -91,6 +92,8 @@ export default function Home({
             </div>
           </div>
         </section>
+
+        <NaoAchouImovel />
       </main>
     </Layout>
   );

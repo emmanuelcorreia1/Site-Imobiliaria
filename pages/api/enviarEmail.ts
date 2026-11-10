@@ -185,7 +185,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const assuntoStr = assunto ? String(assunto).replace(/[\r\n]/g, "").slice(0, 150) : null;
 
   const ehAnuncio = assuntoStr?.toLowerCase().startsWith("anúncio") ?? false;
-  const titulo = ehAnuncio ? "Novo anúncio de imóvel" : "Novo contato pelo site";
+  const ehBusca = assuntoStr?.toLowerCase().startsWith("procura de imóvel") ?? false;
+  const titulo = ehAnuncio
+    ? "Novo anúncio de imóvel"
+    : ehBusca
+      ? "Cliente procurando imóvel"
+      : "Novo contato pelo site";
 
   const proto =
     (req.headers["x-forwarded-proto"] as string)?.split(",")[0]?.trim() || "https";
@@ -221,13 +226,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     await transporter.sendMail({
       from: {
-        name: ehAnuncio ? "Anúncio pelo site" : "Contato pelo site",
+        name: ehAnuncio
+          ? "Anúncio pelo site"
+          : ehBusca
+            ? "Procura de imóvel pelo site"
+            : "Contato pelo site",
         address: EMAIL_USER,
       },
       to: EMAIL_TO,
       replyTo: { name: nomeRemetente, address: emailRemetente },
-      subject: ehAnuncio
-        ? (assuntoStr ?? "Novo anúncio de imóvel")
+      subject: ehAnuncio || ehBusca
+        ? (assuntoStr ?? titulo)
         : assuntoStr
           ? `Contato: ${assuntoStr}`
           : `Novo contato de ${nomeRemetente}`,

@@ -1,6 +1,7 @@
 import Layout from "./Layout";
 import FormBusca from "./FormBusca";
 import ImovelCard from "./ImovelCard2";
+import NaoAchouImovel from "./NaoAchouImovel";
 import { empresa } from "../lib/empresa";
 import { useEffect, useRef, useState } from "react";
 import type { BuscaImoveis, ConsultaImoveis, OpcoesCatalogo } from "../lib/types";
@@ -127,6 +128,8 @@ useEffect(() => {
 
           </section>
         </div>
+
+        <NaoAchouImovel />
       </main>
     </Layout>
   );
