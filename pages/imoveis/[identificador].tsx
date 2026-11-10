@@ -232,7 +232,13 @@ export default function DetalheImovelPage({
                         if (!arrastouGaleria.current) setFotoAmpliada(i);
                       }}
                     >
-                      <img src={src} alt={`${imovel.titulo} — foto ${i + 1}`} draggable={false} />
+                      <img
+                        src={src}
+                        alt={`${imovel.titulo} — foto ${i + 1}`}
+                        draggable={false}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                      />
                     </div>
                   ))}
                 </div>
@@ -283,6 +289,20 @@ export default function DetalheImovelPage({
             {/* Coluna esquerda */}
             <div className="diInfo">
               <span className="diFinalidade">{finalidadeLabel}</span>
+              {imovel.selos && imovel.selos.length > 0 && (
+                <span className="diSelos">
+                  {imovel.selos.map((selo) => (
+                    <span key={selo} className="diSelo">
+                      {selo}
+                    </span>
+                  ))}
+                </span>
+              )}
+              {imovel.precoAnterior && imovel.precoAnterior > imovel.preco && (
+                <span className="diPrecoAnterior">
+                  de R$ {formatarPreco(imovel.precoAnterior)}
+                </span>
+              )}
               <strong className="diPreco">
                 R$ {formatarPreco(imovel.preco)}
                 {imovel.finalidade === "locacao" ? "/mês" : ""}
