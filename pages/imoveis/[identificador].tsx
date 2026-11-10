@@ -5,10 +5,11 @@ import ImovelCard from "../../src/components/ImovelCard";
 import LightboxGaleria from "../../src/components/LightboxGaleria";
 import { empresa } from "../../src/lib/empresa";
 import {
+  filtrarImoveis,
   obterImovelPorCodigo,
   obterImovelPorId,
-  obterImoveisEmDestaque,
 } from "../../src/lib/imovelRepository";
+import { escolherSimilares } from "../../src/lib/similares";
 import { formatarPreco } from "../../src/lib/formatar";
 import type { Imovel } from "../../src/lib/types";
 
@@ -22,6 +23,8 @@ interface DetalheImovelPageProps {
   imovel: Imovel;
   imoveisRelacionados: Imovel[];
   compartilhamento: Compartilhamento;
+  /** JSON-LD (dados estruturados para o Google), já em texto. */
+  dadosEstruturados: string;
 }
 
 /** Transforma um caminho do site (/assets/...) em endereço completo; endereços completos ficam como estão. */
@@ -58,6 +61,7 @@ export default function DetalheImovelPage({
   imovel,
   imoveisRelacionados,
   compartilhamento,
+  dadosEstruturados,
 }: DetalheImovelPageProps) {
   const [form, setForm] = useState({
     nome: "",
@@ -191,6 +195,10 @@ export default function DetalheImovelPage({
       imagemCompartilhar={compartilhamento.imagem}
       urlCanonica={compartilhamento.url}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: dadosEstruturados }}
+      />
       <main className="paginaImovel">
         <section className="tituloPagina">
           <h1>Detalhe do imóvel</h1>
@@ -420,7 +428,7 @@ export default function DetalheImovelPage({
         {/* Imóveis relacionados */}
         {imoveisRelacionados.length > 0 && (
           <section className="diRelacionados">
-            <h2>Já viu esses imóveis?</h2>
+            <h2>Imóveis parecidos com este</h2>
             <div className="gridImoveis">
               {imoveisRelacionados.map((rel) => (
                 <ImovelCard key={rel.id} imovel={rel} />
@@ -453,10 +461,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return { notFound: true };
   }
 
-  const destaque = await obterImoveisEmDestaque(4);
-  const imoveisRelacionados = destaque
-    .filter((i) => i.id !== imovel.id)
-    .slice(0, 3);
+  const { itens: todosImoveis } = await filtrarImoveis({});
+  const imoveisRelacionados = escolherSimilares(imovel, todosImoveis, 3);
 
   const siteUrl = (process.env.SITE_URL || "https://mondialleimobiliaria.com.br").replace(
     /\/$/,
@@ -469,11 +475,30 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     descricao: montarDescricaoCompartilhar(imovel),
   };
 
+  const fotos = imovel.imagens?.length ? imovel.imagens : [imovel.imagem];
+  const dadosEstruturados = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["Product", "RealEstateListing"],
+    name: imovel.titulo,
+    sku: imovel.codigo,
+    description: imovel.descricao.slice(0, 500),
+    url: compartilhamento.url,
+    image: fotos.slice(0, 6).map((src) => urlAbsoluta(src, siteUrl)),
+    offers: {
+      "@type": "Offer",
+      url: compartilhamento.url,
+      price: imovel.preco,
+      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+    },
+  }).replace(/</g, "\\u003c");
+
   return {
     props: {
       imovel,
       imoveisRelacionados,
       compartilhamento,
+      dadosEstruturados,
     },
   };
 };
