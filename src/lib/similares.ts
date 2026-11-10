@@ -6,6 +6,7 @@ import type { Imovel } from "./types";
  * Pontos: mesma categoria (+4), mesma cidade (+2), mesmo bairro (+1) e preço até 40% acima ou abaixo (+3).
  * Imóveis com a mesma finalidade (venda ou locação) vêm primeiro; só entram os de outra finalidade se faltar.
  * Em empate, ganha o preço mais próximo.
+ * O catálogo é pequeno, então a comparação é feita em memória sobre os imóveis ativos.
  */
 export function escolherSimilares(
   atual: Imovel,
