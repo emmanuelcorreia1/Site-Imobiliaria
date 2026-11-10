@@ -32,6 +32,10 @@ export interface Imovel {
   descricao: string;
   destaque: boolean;
   comodidades?: string[];
+  /** Selos curtos mostrados na foto do card, por exemplo "Novo" ou "Aceita financiamento". */
+  selos?: string[];
+  /** Preço antigo; quando maior que o preço atual, o site mostra "de R$ X" riscado. */
+  precoAnterior?: number;
 }
 
 export interface FiltrosImoveis {

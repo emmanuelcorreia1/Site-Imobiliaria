@@ -25,6 +25,8 @@ const BASE_QUERY = `
     i.imagem,
     i.descricao,
     i.destaque,
+    i.selos,
+    i.preco_anterior::float AS "precoAnterior",
     imagens.imagens,
     comodidades.comodidades
   FROM public.imoveis i
@@ -47,6 +49,7 @@ function normalizarListaTexto(valores: string[]): string[] {
 function mapRow(row: Record<string, unknown>): Imovel {
   const imagens = row.imagens as string[];
   const comodidades = row.comodidades as string[];
+  const selos = row.selos as string[] | null;
   return {
     id: row.id as number,
     codigo: row.codigo as string,
@@ -66,6 +69,8 @@ function mapRow(row: Record<string, unknown>): Imovel {
     descricao: row.descricao as string,
     destaque: row.destaque as boolean,
     comodidades: comodidades.length ? comodidades : undefined,
+    selos: selos && selos.length ? selos : undefined,
+    precoAnterior: (row.precoAnterior as number | null) ?? undefined,
   };
 }
 
