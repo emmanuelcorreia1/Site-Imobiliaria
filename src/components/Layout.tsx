@@ -21,6 +21,26 @@ interface LayoutProps {
   urlCanonica?: string;
 }
 
+const SITE_URL = "https://mondialleimobiliaria.com.br";
+
+function dadosEmpresaParaGoogle(empresa: Empresa): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: empresa.nome,
+    url: SITE_URL,
+    logo: `${SITE_URL}/assets/images/Logo%20sem%20fundo.png`,
+    telephone: empresa.whatsapp ? `+${empresa.whatsapp}` : undefined,
+    email: empresa.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: empresa.endereco,
+      addressCountry: "BR",
+    },
+    sameAs: [empresa.instagram, empresa.facebook].filter(Boolean),
+  }).replace(/</g, "\\u003c");
+}
+
 const DESCRICAO_PADRAO =
   "Mondialle Imobiliária: casas, apartamentos, chácaras e salas comerciais à venda e para locação em União da Vitória (PR) e Porto União (SC).";
 
@@ -71,6 +91,10 @@ export default function Layout({
         ))}
       </Head>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: dadosEmpresaParaGoogle(empresa) }}
+      />
       {showHeader && <Header pagina={page} />}
       {children}
       {showFooter && <Footer empresa={empresa} />}
