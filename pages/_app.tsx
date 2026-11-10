@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/global.css" />
         <link rel="stylesheet" href="/assets/css/vendaLocacao.css" />
+        <link rel="stylesheet" href="/assets/css/selos.css" />
       </Head>
       <Component {...pageProps} />
     </>

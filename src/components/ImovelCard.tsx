@@ -13,8 +13,23 @@ export default function ImovelCard({ imovel }: ImovelCardProps) {
         {formatarFinalidade(imovel.finalidade)}
       </span>
 
-      <Link href={`/imoveis/${imovel.codigo}`}>
-        <img src={imovel.imagem} alt={imovel.titulo} className="imagemImovel" />
+      <Link href={`/imoveis/${imovel.codigo}`} className="imagemLink">
+        <img
+          src={imovel.imagem}
+          alt={imovel.titulo}
+          className="imagemImovel"
+          loading="lazy"
+          decoding="async"
+        />
+        {imovel.selos && imovel.selos.length > 0 && (
+          <span className="selosImovel">
+            {imovel.selos.map((selo) => (
+              <span key={selo} className="seloImovel">
+                {selo}
+              </span>
+            ))}
+          </span>
+        )}
       </Link>
 
       <div className="cardGrid">
@@ -47,6 +62,11 @@ export default function ImovelCard({ imovel }: ImovelCardProps) {
         <div className="preco">
           <p>Preço</p>
           <strong>
+            {imovel.precoAnterior && imovel.precoAnterior > imovel.preco && (
+              <span className="precoAnterior">
+                de R$ {formatarPreco(imovel.precoAnterior)}
+              </span>
+            )}
             R$ {formatarPreco(imovel.preco)}
             {imovel.finalidade === "locacao" ? "/mês" : ""}
           </strong>
